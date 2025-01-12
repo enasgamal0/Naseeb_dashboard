@@ -3,7 +3,6 @@
         <!-- START:: SKELETON LOADER -->
         <!-- <SliderSkeletonLoader v-if="!sliderData" /> -->
         <!-- END:: SKELETON LOADER -->
-
         <!-- START:: SLIDER -->
         <carousel
             dir="ltr"
@@ -24,11 +23,11 @@
                 v-for="slide in sliderData"
                 :key="slide.id"
             >
-                <img :src="slide.slider" alt="Slider Image" />
+                <img :src="slide.url" alt="Slider Image" />
 
-                <div class="slide_content_wrapper">
-                    <h2>{{ slide.content }}</h2>
-                </div>
+                <!-- <div class="slide_content_wrapper">
+                    <h2>{{ slide.file_name }}</h2>
+                </div> -->
             </div>
             <!-- END:: SLIDER ITEM -->
         </carousel>
@@ -66,3 +65,8 @@ export default {
     },
 };
 </script>
+<style>
+.slider_wrapper .owl-carousel .owl-stage-outer .owl-stage .owl-item .slider_image_wrapper img{
+    object-fit: contain !important;
+}
+</style>

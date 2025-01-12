@@ -4,6 +4,11 @@
     <div class="form_title_wrapper">
       <h4>{{ $t("TITLES.showClient", { name: data.name }) }}</h4>
     </div>
+    <div class="col-12 text-end">
+      <v-btn @click="$router.go(-1)" style="color: #3fa9f5">
+        <i class="fas fa-backward"></i>
+      </v-btn>
+    </div>
     <!-- End:: Title -->
 
     <!-- Start:: Single Step Form Content -->
@@ -28,22 +33,27 @@
       <!-- ==== Start:: Client Main Data ==== -->
       <form>
         <div class="row">
-          <!-- Start:: Image Upload Input -->
-          <base-image-upload-input
-            col="12"
-            identifier="client_image"
-            :placeholder="$t('PLACEHOLDERS.personalImage')"
-            :preSelectedImage="data.image"
-            disabled
-            class="disabled_input"
-          />
-          <!-- End:: Image Upload Input -->
+          <!-- Start:: Image -->
+          <div class="preview-container text-center my-3">
+            <img
+              v-if="data.image"
+              col="12"
+              :src="data.image"
+              :alt="$t('PLACEHOLDERS.personalImage')"
+            />
+          </div>
+          <!-- End:: Image -->
+
+          <div class="mt-5">
+            <label style="color: #3fa9f5; font-size: 16px;">{{ $t("PLACEHOLDERS.user_photos") }}</label>
+            <TheSlider :sliderData="data.images" />
+          </div>
 
           <!-- Start:: Ar Name Input -->
           <base-input
-            col="6"
+            col="12"
             type="text"
-            :placeholder="$t('PLACEHOLDERS.name')"
+            :placeholder="$t('PLACEHOLDERS.user_name')"
             v-model.trim="data.name"
             disabled
             class="disabled_input"
@@ -52,41 +62,217 @@
 
           <!-- Start:: Phone Input -->
           <base-input
-            col="6"
-            type="tel"
-            :placeholder="$t('PLACEHOLDERS.phone')"
-            v-model.trim="data.phone"
-            readonly
+            col="12"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.bio')"
+            v-model.trim="data.bio"
+            disabled
             class="disabled_input"
           />
           <!-- End:: Phone Input -->
 
           <!-- Start:: Second Phone Input -->
           <!-- <base-input col="4" type="tel" :placeholder="$t('PLACEHOLDERS.secondPhone')" v-model.trim="data.secondPhone"
-            readonly class="disabled_input" /> -->
+            disabled class="disabled_input" /> -->
           <!-- End:: Second Phone Input -->
 
-          <!-- Start:: Email Input -->
+          <!-- Start:: Input -->
           <base-input
-            col="6"
+            col="4"
             type="text"
-            :placeholder="$t('PLACEHOLDERS.email')"
-            v-model.trim="data.email"
-            readonly
+            :placeholder="$t('PLACEHOLDERS.country')"
+            v-model.trim="data.country.name"
+            disabled
             class="disabled_input"
           />
-          <!-- End:: Email Input -->
+          <!-- End:: Input -->
 
-          <!-- Start:: Joining Date Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('TABLES.Clients.age')"
+            v-model.trim="data.age"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.account_type')"
+            v-model.trim="data.account_type"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.height')"
+            v-model.trim="data.height"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.weight')"
+            v-model.trim="data.weight"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.skin_color')"
+            v-model.trim="data.skin_color"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="12"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.status')"
+            v-model.trim="data.trans_status"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('PLACEHOLDERS.joiningDate')"
-            v-model.trim="data.joiningDate"
-            readonly
+            :placeholder="$t('PLACEHOLDERS.education_level')"
+            v-model.trim="data.education_level"
+            disabled
             class="disabled_input"
           />
-          <!-- End:: Joining Date Input -->
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="6"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.profession')"
+            v-model.trim="data.profession"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.marital_status')"
+            v-model.trim="data.trans_marital_status"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.desire_for_children')"
+            v-model.trim="data.desire_for_children"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.readiness_for_marriage')"
+            v-model.trim="data.trans_readiness_for_marriage"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <base-select-input
+            col="12"
+            :optionsList="data.languages"
+            :placeholder="$t('PLACEHOLDERS.languages')"
+            :multiple="true"
+            v-model="data.languages"
+            disabled
+          />
+          <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.religious_sect')"
+            v-model.trim="data.religious_sect"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+           <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.religious_commitment_level')"
+            v-model.trim="data.religious_commitment_level"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+           <!-- Start:: Input -->
+          <base-input
+            col="4"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.prayer_habits')"
+            v-model.trim="data.prayer_habits"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+           <!-- Start:: Input -->
+          <base-input
+            col="6"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.smoking')"
+            v-model.trim="data.smoking"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+           <!-- Start:: Input -->
+          <base-input
+            col="6"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.drinking_alcohol')"
+            v-model.trim="data.drinking_alcohol"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
+          <base-select-input
+            col="12"
+            :optionsList="data.hobbies"
+            :placeholder="$t('PLACEHOLDERS.hobbies')"
+            :multiple="true"
+            v-model="data.hobbies"
+            disabled
+          />
+          <base-select-input
+            col="12"
+            :optionsList="data.personal_traits"
+            :placeholder="$t('PLACEHOLDERS.personal_traits')"
+            :multiple="true"
+            v-model="data.personal_traits"
+            disabled
+          />
         </div>
       </form>
       <!-- ==== End:: Client Main Data ==== -->
@@ -96,8 +282,14 @@
 </template>
 
 <script>
+import TheSlider from "../../../../src/components/structure/TheSlider.vue";
+
 export default {
   name: "SingleClient",
+
+  components: {
+    TheSlider,
+  },
 
   props: {
     id: {
@@ -147,19 +339,38 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `users/${this.$route.params.id}`,
+          url: `clients/${this.$route.params.id}`,
         });
         // console.log("DATA =>", res.data.data);
-        this.data.image = res.data.data.User.image;
-        this.data.name = res.data.data.User.name;
-        this.data.phone = res.data.data.User.mobile;
-        this.data.email = res.data.data.User.email;
-        this.data.joiningDate = res.data.data.User.created_at;
-        this.data.active = res.data.data.User.is_active;
+        this.data.image = res.data.data.Client.avatar;
+        this.data.images = res.data.data.Client.images;
+        this.data.name = res.data.data.Client.user_name;
+        this.data.bio = res.data.data.Client.user_bio;
+        this.data.country = res.data.data.Client.country;
+        this.data.age = res.data.data.Client.age;
+        this.data.account_type = res.data.data.Client.trans_account_type;
+        this.data.height = res.data.data.Client.height;
+        this.data.weight = res.data.data.Client.weight;
+        this.data.skin_color = res.data.data.Client.skin_color;
+        this.data.trans_status = res.data.data.Client.trans_status;
+        this.data.education_level = res.data.data.Client.education_profession.education_level.name;
+        this.data.profession = res.data.data.Client.education_profession.profession.name;
+        this.data.trans_marital_status = res.data.data.Client.family_maritalStatus.trans_marital_status;
+        this.data.desire_for_children = res.data.data.Client.family_maritalStatus.desire_for_children;
+        this.data.trans_readiness_for_marriage = res.data.data.Client.family_maritalStatus.trans_readiness_for_marriage;
+        this.data.languages = res.data.data.Client.spoken_languages;
+        this.data.religious_sect = res.data.data.Client.religious_beliefs.religious_sect.name;
+        this.data.religious_commitment_level = res.data.data.Client.religious_beliefs.trans_commitment_level;
+        this.data.prayer_habits = res.data.data.Client.religious_beliefs.trans_praying;
+        this.data.smoking = res.data.data.Client.lifestyle_choices.smoking;
+        this.data.drinking_alcohol = res.data.data.Client.lifestyle_choices.drinking_alcohol;
+        this.data.hobbies = res.data.data.Client.hobbies;
+        this.data.personal_traits = res.data.data.Client.personal_traits;
+        this.data.active = res.data.data.Client.is_active;
         // this.data.secondPhone = res.data.data.User.second_phone;
-        this.data.numberOfVisits = res.data.data.User.login_number;
+        this.data.numberOfVisits = res.data.data.Client.login_count;
         // back must return date as 2024-05-13
-        this.data.lastVisit = res.data.data.User.last_login_date;
+        this.data.lastVisit = res.data.data.Client.last_login;
       } catch (error) {
         console.log(error.response.data.message);
       }

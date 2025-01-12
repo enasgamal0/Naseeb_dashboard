@@ -193,7 +193,7 @@
         <!-- Start:: Actions -->
         <template v-slot:[`item.actions`]="{ item }">
           <div class="actions">
-            <a-tooltip placement="bottom" v-if="$can('users show', 'users')">
+            <a-tooltip placement="bottom" v-if="$can('clients show', 'clients')">
               <template slot="title">
                 <span>{{ $t("BUTTONS.show") }}</span>
               </template>
@@ -206,7 +206,7 @@
               <i class="fal fa-lock-alt fs-5 blue-grey--text text--darken-1"></i>
             </template> -->
 
-            <!-- <template v-if="$can('users activate', 'users')">
+            <!-- <template v-if="$can('clients activate', 'clients')">
               <a-tooltip placement="bottom" v-if="!item.user.is_active">
                 <template slot="title">
                   <span>{{ $t("BUTTONS.activate") }}</span>
@@ -320,17 +320,12 @@ export default {
         {
           id: 1,
           name: this.$t("STATUS.active"),
-          value: true,
+          value: 1,
         },
         {
           id: 2,
           name: this.$t("STATUS.notActive"),
-          value: false,
-        },
-        {
-          id: 3,
-          name: this.$t("STATUS.all"),
-          value: null,
+          value: 0,
         },
       ];
     },
@@ -378,6 +373,12 @@ export default {
         {
           text: this.$t("TABLES.Clients.email"),
           value: "user.email",
+          align: "center",
+          sortable: false,
+        },
+        {
+          text: this.$t("PLACEHOLDERS.gender"),
+          value: "user.gender",
           align: "center",
           sortable: false,
         },
@@ -479,18 +480,18 @@ export default {
 
         let res = await this.$axios({
           method: "GET",
-          url: "users",
+          url: "clients",
           params: {
             page: this.paginations.current_page,
             name: nameParam,
             mobile: this.filterOptions.phone,
             email: this.filterOptions.email,
-            status: this.filterOptions.isActive?.value,
+            is_active: this.filterOptions.isActive?.value,
           },
         });
         this.loading = false;
         // console.log("All Data ==>", res.data.data);
-        this.tableRows = res.data.data;
+        this.tableRows = res.data.data.data;
         this.paginations.last_page = res.data.meta.last_page;
         this.paginations.items_per_page = res.data.meta.per_page;
       } catch (error) {
@@ -505,7 +506,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `users/activate/${item.user.id}`,
+          url: `clients/status/${item.user.id}`,
         });
         this.setTableRows();
         this.$message.success(this.$t("MESSAGES.changeActivation"));

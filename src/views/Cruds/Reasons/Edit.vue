@@ -138,7 +138,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `reasonsCancellation/${this.$route.params.id}`,
+          url: `ban-reasons/${this.$route.params.id}`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;
@@ -155,11 +155,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `reasonsCancellation/${this.$route.params.id}`,
+          url: `ban-reasons/${this.$route.params.id}`,
         });
-        this.data.name = res.data.data.ReasonsCancellation.name_ar;
-        this.data.nameEn = res.data.data.ReasonsCancellation.name_en;
-        this.data.active = res.data.data.ReasonsCancellation.is_active;
+        this.data.name = res.data.data.BanReason.name_ar;
+        this.data.nameEn = res.data.data.BanReason.name_en;
+        this.data.active = res.data.data.BanReason.is_active;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);

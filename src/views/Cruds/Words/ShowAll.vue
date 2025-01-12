@@ -24,7 +24,7 @@
               <base-input
                 col="5"
                 type="text"
-                :placeholder="$t('PLACEHOLDERS.the_reason')"
+                :placeholder="$t('PLACEHOLDERS.word')"
                 v-model.trim="filterOptions.name"
               />
               <!-- End:: Name Input -->
@@ -60,7 +60,7 @@
       <!--  =========== Start:: Table Title =========== -->
       <div class="table_title_wrapper">
         <div class="title_text_wrapper">
-          <h5>{{ $t("PLACEHOLDERS.reasons") }}</h5>
+          <h5>{{ $t("PLACEHOLDERS.words") }}</h5>
           <button
             v-if="!filterFormIsActive"
             class="filter_toggler"
@@ -72,10 +72,10 @@
 
         <div
           class="title_route_wrapper"
-          v-if="$can('banreasons create', 'banreasons')"
+          v-if="$can('offensivewords create', 'offensivewords')"
         >
-          <router-link to="/reasons/create">
-            {{ $t("TITLES.addReason") }}
+          <router-link to="/words/create">
+            {{ $t("TITLES.addWord") }}
           </router-link>
         </div>
       </div>
@@ -109,7 +109,7 @@
             class="activation"
             dir="ltr"
             style="z-index: 1"
-            v-if="$can('banreasons activate', 'banreasons')"
+            v-if="$can('offensivewords activate', 'offensivewords')"
           >
             <v-switch
               class="mt-2"
@@ -127,7 +127,7 @@
           <div class="actions">
             <a-tooltip
               placement="bottom"
-              v-if="$can('banreasons delete', 'banreasons')"
+              v-if="$can('offensivewords delete', 'offensivewords')"
             >
               <template slot="title">
                 <span>{{ $t("BUTTONS.delete") }}</span>
@@ -138,7 +138,7 @@
             </a-tooltip>
             <a-tooltip
               placement="bottom"
-              v-if="$can('banreasons edit', 'banreasons')"
+              v-if="$can('offensivewords edit', 'offensivewords')"
             >
               <template slot="title">
                 <span>{{ $t("BUTTONS.edit") }}</span>
@@ -147,7 +147,7 @@
                 <i class="fal fa-edit"></i>
               </button>
             </a-tooltip>
-            <a-tooltip placement="bottom" v-if="$can('banreasons show', 'banreasons')">
+            <a-tooltip placement="bottom" v-if="$can('offensivewords show', 'offensivewords')">
               <template slot="title">
                 <span>{{ $t("BUTTONS.show") }}</span>
               </template>
@@ -241,7 +241,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "AllReasons",
+  name: "AllWords",
 
   computed: {
     ...mapGetters({
@@ -291,7 +291,7 @@ export default {
           sortable: false,
         },
         {
-          text: this.$t("PLACEHOLDERS.the_reason"),
+          text: this.$t("PLACEHOLDERS.word"),
           value: "name",
           sortable: false,
           align: "center",
@@ -351,7 +351,7 @@ export default {
     // Start:: Handel Filter
     async submitFilterForm() {
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/reasons/all", query: { page: 1 } });
+        await this.$router.push({ path: "/words/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
@@ -362,7 +362,7 @@ export default {
       this.filterOptions.to_date = null;
 
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/reasons/all", query: { page: 1 } });
+        await this.$router.push({ path: "/words/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
@@ -377,7 +377,7 @@ export default {
         },
       });
 
-      // Scroll To Screen's Top After Get reasons
+      // Scroll To Screen's Top After Get words
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     },
@@ -387,7 +387,7 @@ export default {
         console.log("this.filterOptions.name",this.filterOptions)
         let res = await this.$axios({
           method: "GET",
-          url: "ban-reasons",
+          url: "offensive-words",
           params: {
             page: this.paginations.current_page,
             name: this.filterOptions.name,
@@ -421,7 +421,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `ban-reasons/status/${item.id}`,
+          url: `offensive-words/status/${item.id}`,
           data: REQUEST_DATA,
         });
         this.setTableRows();
@@ -435,10 +435,10 @@ export default {
     // ==================== Start:: Crud ====================
     // ===== Start:: End
     editItem(item) {
-      this.$router.push({ path: `/reasons/edit/${item.id}` });
+      this.$router.push({ path: `/words/edit/${item.id}` });
     },
     showItem(item) {
-      this.$router.push({ path: `/reasons/show/${item.id}` });
+      this.$router.push({ path: `/words/show/${item.id}` });
     },
     // ===== End:: End
 
@@ -452,7 +452,7 @@ export default {
       try {
         await this.$axios({
           method: "DELETE",
-          url: `ban-reasons/${this.itemToDelete.id}`,
+          url: `offensive-words/${this.itemToDelete.id}`,
         });
         this.dialogDelete = false;
         this.setTableRows();

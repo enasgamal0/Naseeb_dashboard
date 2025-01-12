@@ -336,7 +336,7 @@
       <div
         class="home_route"
         @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('reasonscancellations index', 'reasonscancellations')"
+        v-if="$can('banreasons index', 'banreasons')"
       >
         <router-link to="/reasons/all">
           <span class="route_icon">
@@ -353,6 +353,28 @@
         </router-link>
       </div>
       <!-- End:: reasons Route -->
+
+      <!-- Start:: Words Route -->
+      <div
+        class="home_route"
+        @click="$emit('fireToggleNavDrawerEmit')"
+        v-if="$can('offensivewords index', 'offensivewords')"
+      >
+        <router-link to="/Words/all">
+          <span class="route_icon">
+            <img
+              src="@/assets/media/icons/ui_icons/cancel.png"
+              alt="icon"
+              width="40"
+              height="40"
+            />
+          </span>
+          <span class="route_text">
+            {{ $t("PLACEHOLDERS.words") }}
+          </span>
+        </router-link>
+      </div>
+      <!-- End:: Words Route -->
 
       <!-- Start:: RequestWallets Route -->
       <div
@@ -551,6 +573,50 @@
       </div>
       <!-- End:: managements Route -->
 
+      <!-- Start:: users Route -->
+      <div
+        class="home_route"
+        @click="$emit('fireToggleNavDrawerEmit')"
+        v-if="$can('clients index', 'clients')"
+      >
+        <router-link to="/Clients/all">
+          <span class="route_icon">
+            <img
+              src="@/assets/media/icons/ui_icons/clients.svg"
+              alt="icon"
+              width="40"
+              height="40"
+            />
+          </span>
+          <span class="route_text">
+            {{ $t("SIDENAV.Clients.title") }}
+          </span>
+        </router-link>
+      </div>
+      <!-- End:: users Route -->
+
+      <!-- Start:: complaints Route -->
+      <div
+        class="home_route"
+        @click="$emit('fireToggleNavDrawerEmit')"
+        v-if="$can('complaints index', 'complaints')"
+      >
+        <router-link to="/Complaints/all">
+          <span class="route_icon">
+            <img
+              src="@/assets/media/icons/ui_icons/subtrain.png"
+              alt="icon"
+              width="40"
+              height="40"
+            />
+          </span>
+          <span class="route_text">
+            {{ $t("PLACEHOLDERS.complaints_management") }}
+          </span>
+        </router-link>
+      </div>
+      <!-- End:: complaints Route -->
+
       <!-- Start:: ads Route -->
       <div
         class="home_route"
@@ -616,28 +682,6 @@
         </router-link>
       </div>
       <!-- End:: app settings Route -->
-
-      <!-- Start:: users Route -->
-      <!-- <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('clients index', 'clients')"
-      >
-        <router-link to="/Clients/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/client.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("SIDENAV.Clients.title") }}
-          </span>
-        </router-link>
-      </div> -->
-      <!-- End:: users Route -->
 
       <!-- Start:: Side Nav Routes -->
       <div class="side_routes_wrapper">

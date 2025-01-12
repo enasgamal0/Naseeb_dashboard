@@ -23,8 +23,8 @@
               <base-input
                 col="4"
                 type="text"
-                :placeholder="$t('TABLES.ContactMessages.clientName')"
-                v-model.trim="filterOptions.name"
+                :placeholder="$t('TABLES.ContactMessages.complaint_name')"
+                v-model.trim="filterOptions.complainant_name"
               />
               <!-- End:: Name Input -->
 
@@ -32,19 +32,26 @@
               <base-input
                 col="4"
                 type="tel"
-                :placeholder="$t('PLACEHOLDERS.phone')"
-                v-model.trim="filterOptions.phone"
+                :placeholder="$t('TABLES.ContactMessages.complaint_mobile')"
+                v-model.trim="filterOptions.complainant_mobile"
               />
               <!-- End:: Phone Input -->
 
-              <!-- Start:: Email Input -->
+              <!-- Start::  Input -->
               <base-input
                 col="4"
                 type="text"
-                :placeholder="$t('PLACEHOLDERS.email')"
-                v-model.trim="filterOptions.email"
+                :placeholder="$t('TABLES.ContactMessages.reported_user_name')"
+                v-model.trim="filterOptions.reported_user_name"
               />
-              <!-- End:: Email Input -->
+              <!-- End::  Input -->
+
+              <base-input
+                col="4"
+                type="text"
+                :placeholder="$t('TABLES.ContactMessages.reported_user_mobile')"
+                v-model.trim="filterOptions.reported_user_mobile"
+              />
 
               <!-- Start:: Date Input -->
               <!-- <base-picker-input col="4" type="date" :placeholder="$t('PLACEHOLDERS.date')"
@@ -55,8 +62,8 @@
               <base-select-input
                 col="4"
                 :optionsList="messageTypes"
-                :placeholder="$t('PLACEHOLDERS.messageType')"
-                v-model="filterOptions.messageType"
+                :placeholder="$t('TABLES.ContactMessages.type')"
+                v-model="filterOptions.ban_reason_id"
               />
               <!-- End:: Message Type Input -->
 
@@ -91,7 +98,7 @@
       <!--  =========== Start:: Table Title =========== -->
       <div class="table_title_wrapper">
         <div class="title_text_wrapper">
-          <h5>{{ $t("TITLES.contactMessages") }}</h5>
+          <h5>{{ $t("PLACEHOLDERS.complaints_management") }}</h5>
           <button
             v-if="!filterFormIsActive"
             class="filter_toggler"
@@ -145,13 +152,13 @@
         </template>
         <!-- Start:: Phone -->
 
-        <template v-slot:[`item.message`]="{ item }">
+        <template v-slot:[`item.content`]="{ item }">
           <template>
-            <h6 class="text-danger" v-if="item.message.length === 0">
+            <h6 class="text-danger" v-if="item.content?.length === 0">
               {{ $t("TABLES.noData") }}
             </h6>
             <div class="actions" v-else>
-              <button class="btn_show" @click="showReplayModal(item.message)">
+              <button class="btn_show" @click="showReplayModal(item.content)">
                 <i class="fal fa-file-alt"></i>
               </button>
             </div>
@@ -176,6 +183,7 @@
           </template> -->
         </template>
         <!-- End:: Message Reply -->
+         
 
         <!-- Start:: Message Type -->
         <template v-slot:[`item.type`]="{ item }">
@@ -191,15 +199,15 @@
         <!-- Start:: Message Status -->
         <template v-slot:[`item.is_replied`]="{ item }">
           <v-chip
-            :color="item.reply ? 'green' : 'red'"
+            :color="item.status == 'read' ? 'green' : 'red'"
             text-color="white"
             small
           >
-            <template v-if="item.reply">
-              {{ $t("STATUS.replied") }}
+            <template v-if="item.status == 'read'">
+              {{ $t("STATUS.read") }}
             </template>
             <template v-else>
-              {{ $t("STATUS.notReplied") }}
+              {{ $t("STATUS.notRead") }}
             </template>
           </v-chip>
         </template>
@@ -259,7 +267,7 @@
                 <v-btn
                   class="modal_confirm_btn"
                   @click="sendReplay"
-                  :disabled="!!!messageReplay"
+                  :disabled="!!!messageReplay || messageReplay?.length<3"
                 >
                   {{ $t("BUTTONS.replay") }}
                 </v-btn>
@@ -315,52 +323,17 @@ export default {
       getAppLocale: "AppLangModule/getAppLocale",
     }),
 
-    messageTypes() {
-      return [
-        {
-          id: 1,
-          name: this.$t("STATUS.request"),
-          value: "request",
-        },
-        {
-          id: 2,
-          name: this.$t("STATUS.suggestion"),
-          value: "suggestion",
-        },
-        {
-          id: 3,
-          name: this.$t("STATUS.inquiry"),
-          value: "inquiry",
-        },
-        {
-          id: 4,
-          name: this.$t("STATUS.complaint"),
-          value: "complaint",
-        },
-        {
-          id: 5,
-          name: this.$t("STATUS.other"),
-          value: "another",
-        },
-        {
-          id: 6,
-          name: this.$t("STATUS.all"),
-          value: null,
-        },
-      ];
-    },
-
     messageStatuses() {
       return [
         {
           id: 1,
-          name: this.$t("STATUS.replied"),
-          value: "response",
+          name: this.$t("STATUS.read"),
+          value: "read",
         },
         {
           id: 2,
-          name: this.$t("STATUS.notReplied"),
-          value: "No_response",
+          name: this.$t("STATUS.notRead"),
+          value: "unread",
         },
       ];
     },
@@ -368,6 +341,7 @@ export default {
 
   data() {
     return {
+      messageTypes: [],
       // Start:: Loading Data
       loading: false,
       isWaitingRequest: false,
@@ -376,11 +350,11 @@ export default {
       // Start:: Filter Data
       filterFormIsActive: false,
       filterOptions: {
-        name: null,
-        phone: null,
-        email: null,
-        date: null,
-        messageType: null,
+        complainant_name: null,
+        complainant_mobile: null,
+        reported_user_name: null,
+        reported_user_mobile: null,
+        ban_reason_id: null,
         status: null,
       },
       // End:: Filter Data
@@ -390,41 +364,54 @@ export default {
       tableHeaders: [
         {
           text: this.$t("TABLES.ContactMessages.serialNumber"),
-          value: "serialNumber",
+          value: "id",
           align: "center",
           width: "80",
           sortable: false,
         },
         {
-          text: this.$t("TABLES.ContactMessages.clientName"),
-          value: "name",
+          text: this.$t("TABLES.ContactMessages.complaint_name"),
+          value: "complaint_name",
           align: "center",
           width: "150",
           sortable: false,
         },
         {
-          text: this.$t("TABLES.ContactMessages.phone"),
-          value: "mobile",
+          text: this.$t("TABLES.ContactMessages.complaint_mobile"),
+          value: "complaint_mobile",
           align: "center",
           width: "140",
           sortable: false,
         },
         {
-          text: this.$t("TABLES.ContactMessages.email"),
-          value: "email",
+          text: this.$t("TABLES.ContactMessages.reported_user_name"),
+          value: "reported_user_name",
           align: "center",
           width: "150",
         },
         {
+          text: this.$t("TABLES.ContactMessages.reported_user_mobile"),
+          value: "reported_user_mobile",
+          align: "center",
+          width: "150",
+        },
+        {
+          text: this.$t("TABLES.ContactMessages.type"),
+          value: "ban_reason",
+          align: "center",
+          width: "80",
+          sortable: false,
+        },
+        {
           text: this.$t("TABLES.ContactMessages.date"),
-          value: "created_at",
+          value: "submission_date",
           align: "center",
           width: "120",
           sortable: false,
         },
         {
-          text: this.$t("TABLES.ContactMessages.message"),
-          value: "message",
+          text: this.$t("TABLES.ContactMessages.content"),
+          value: "content",
           align: "center",
           width: "80",
           sortable: false,
@@ -433,14 +420,7 @@ export default {
           text: this.$t("TABLES.ContactMessages.replay"),
           value: "reply",
           align: "center",
-          width: "100",
-          sortable: false,
-        },
-        {
-          text: this.$t("TABLES.ContactMessages.type"),
-          value: "type_message",
-          align: "center",
-          width: "80",
+          width: "120",
           sortable: false,
         },
         {
@@ -493,21 +473,22 @@ export default {
     async submitFilterForm() {
       if (this.$route.query.page !== "1") {
         await this.$router.push({
-          path: "/contact-messages/all",
+          path: "/Complaints/all",
           query: { page: 1 },
         });
       }
       this.setTableRows();
     },
     async resetFilter() {
-      this.filterOptions.name = null;
-      this.filterOptions.phone = null;
-      this.filterOptions.email = null;
+      this.filterOptions.complainant_name = null;
+      this.filterOptions.complainant_mobile = null;
+      this.filterOptions.reported_user_name = null;
+      this.filterOptions.reported_user_mobile = null;
+      this.filterOptions.ban_reason_id = null;
       this.filterOptions.status = null;
-      this.filterOptions.messageType = null;
       if (this.$route.query.page !== "1") {
         await this.$router.push({
-          path: "/contact-messages/all",
+          path: "/Complaints/all",
           query: { page: 1 },
         });
       }
@@ -533,25 +514,26 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: "contacts",
+          url: "complaints",
           params: {
             page: this.paginations.current_page,
-            name: this.filterOptions.name,
-            mobile: this.filterOptions.phone,
-            email: this.filterOptions.email,
-            type_message: this.filterOptions.messageType?.value,
+            complainant_name: this.filterOptions.complainant_name,
+            complainant_mobile: this.filterOptions.complainant_mobile,
+            reported_user_name: this.filterOptions.reported_user_name,
+            reported_user_mobile: this.filterOptions.reported_user_mobile,
+            ban_reason_id: this.filterOptions.ban_reason_id?.id,
             status: this.filterOptions.status?.value,
           },
         });
         this.loading = false;
+        console.log("All Data ==>", res.data.data.data);
         res.data.data.data.forEach((item, index) => {
-          item.serialNumber =
+          item.id =
             (this.paginations.current_page - 1) *
               this.paginations.items_per_page +
             index +
             1;
         });
-        // console.log("All Data ==>", res.data.data);
         this.tableRows = res.data.data.data;
         this.paginations.last_page = res.data.data.meta.last_page;
         this.paginations.items_per_page = res.data.data.meta.per_page;
@@ -561,6 +543,18 @@ export default {
       }
     },
     // End:: Set Table Rows
+
+    async getBanReasons() {
+      try {
+        let res = await this.$axios({
+          method: "GET",
+          url: "ban-reasons?page=0&limit=0",
+        });
+        this.messageTypes = res.data.data.data;
+      } catch (error) {
+        console.log(error.response.data.message);
+      }
+    },
 
     // Start:: Control Modals
     showReplayModal(replay) {
@@ -587,7 +581,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `contacts/reply/${this.itemToSendReplay.id}`,
+          url: `complaints/reply/${this.itemToSendReplay.id}`,
           data: REQUEST_DATA,
         });
         this.$message.success(this.$t("MESSAGES.sentSuccessfully"));
@@ -616,6 +610,7 @@ export default {
     if (this.$route.query.page) {
       this.paginations.current_page = +this.$route.query.page;
     }
+    this.getBanReasons();
     this.setTableRows();
     // End:: Fire Methods
   },

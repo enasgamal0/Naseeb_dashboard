@@ -42,7 +42,7 @@
       "financial_reports": "التقارير المالية"
     },
     "Clients": {
-      "title": "إدارة العملاء",
+      "title": "إدارة مستخدمي التطبيق",
       "name": "اسم العميل",
       "moblie": "رقم الجوال",
       "email": "البريد الإلكتروني",
@@ -752,7 +752,13 @@
       "type": "النوع",
       "status": "الحالة",
       "actions": "التحكم",
-      "message": "الرسالة"
+      "message": "الرسالة",
+      "complaint_name": "اسم صاحب الشكوى",
+      "complaint_mobile": "هاتف صاحب الشكوى",
+      "reported_user_name": "اسم المبلغ عنه",
+      "reported_user_mobile": "هاتف المبلغ عنه",
+      "content": "المحتوى",
+      "response": "الرد"
     },
     "Roles": {
       "serialNumber": "المسلسل",
@@ -861,6 +867,10 @@
       "nameAr": "السبب بالعربية",
       "nameEn": "السبب بالإنجليزية"
     },
+    "Words": {
+      "nameAr": "الكلمة بالعربية",
+      "nameEn": "الكلمة بالإنجليزية"
+    },
     "subscriptions": {
       "serialNumber": "المسلسل",
       "name": "الاسم",
@@ -928,6 +938,8 @@
     "dontactve": "غير مفعل",
     "replied": "تم الرد",
     "notReplied": "لم يتم الرد",
+    "read": "مقروءة",
+    "notRead": "غير مقروءة",
     "reciev_book": "حجز مباشر",
     "norecieve_book": "حجز غير مباشر",
     "request": "طلب",
@@ -1096,9 +1108,12 @@
     "capacities_prices_for": "أسعار السعات لـ ({name})",
     "services_capacities": "سعات الوحدات",
     "services_additions": "الإضافات السكنية",
-    "addReason": "إضافة سبب إلغاء",
-    "editReason": "تعديل سبب إلغاء",
-    "showReason": "عرض بيانات سبب إلغاء"
+    "addReason": "إضافة سبب حظر",
+    "editReason": "تعديل سبب حظر",
+    "showReason": "عرض بيانات سبب حظر",
+    "addWord": "إضافة كلمة مسيئة",
+    "editWord": "تعديل كلمة مسيئة",
+    "showWord": "عرض بيانات كلمة مسيئة"
   },
 
   "BUTTONS": {
@@ -1225,6 +1240,28 @@
   },
 
   "PLACEHOLDERS": {
+    "words": "إدارة الكلمات المسيئة",
+    "word": "الكلمة",
+    "complaints_management": "إدارة الشكاوى",
+    "bio": "النبذة التعريفية",
+    "account_type": "نوع الحساب",
+    "height": "الطول",
+    "weight": "الوزن",
+    "skin_color": "لون البشرة",
+    "education_level": "المستوى التعليمي",
+    "profession": "المهنة",
+    "marital_status": "الحالة الاجتماعية",
+    "desire_for_children": "الرغبة بالأطفال",
+    "readiness_for_marriage": "الاستعداد للزواج",
+    "languages": "اللغات",
+    "religious_sect": "المذهب الديني",
+    "religious_commitment_level": "مستوى الالتزام الديني",
+    "prayer_habits": "الصلاة",
+    "smoking": "مدخن",
+    "drinking_alcohol": "شرب الكحوليات",
+    "hobbies": "الهوايات",
+    "personal_traits": "صفات الشخصية",
+    "user_photos": "صور المستخدم",
     "map_location": "الموقع على الخريطة",
     "FinancialOrders": "التقارير الماليه للطلبات",
     "financialpack": "التقارير الماليه للباقات",
@@ -1525,7 +1562,7 @@
     "services": "إدارة الخدمات",
     "workplaces": "إدارة المقرات",
     "count_finish_order": "عدد الطلبات المنتهية",
-    "reasons": "إدارة أسباب إلغاء الطلب",
+    "reasons": "إدارة أسباب الحظر",
     "count_uses": "عدد مرات استخدام السبب",
     "count_use": "عدد المستخدمين المشتركين بالباقة",
     "count_uses_coupon": "عدد الاستخدامات",

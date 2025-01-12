@@ -2,7 +2,7 @@
   <div class="crud_form_wrapper">
     <!-- Start:: Title -->
     <div class="form_title_wrapper">
-      <h4>{{ $t("TITLES.addReason") }}</h4>
+      <h4>{{ $t("TITLES.addWord") }}</h4>
     </div>
     <div class="col-12 text-end">
       <v-btn @click="$router.go(-1)" style="color: #3fa9f5">
@@ -19,14 +19,14 @@
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('TABLES.Reasons.nameAr')"
+            :placeholder="$t('TABLES.Words.nameAr')"
             v-model.trim="data.name"
             required
           />
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('TABLES.Reasons.nameEn')"
+            :placeholder="$t('TABLES.Words.nameEn')"
             v-model.trim="data.nameEn"
             required
           />
@@ -68,7 +68,7 @@
 import moment from "moment";
 
 export default {
-  name: "CreateReason",
+  name: "CreateWord",
   data() {
     return {
       // Start:: Loader Control Data
@@ -165,12 +165,12 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `ban-reasons`,
+          url: `offensive-words`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;
         this.$message.success(this.$t("MESSAGES.addedSuccessfully"));
-        this.$router.push({ path: "/reasons/all" });
+        this.$router.push({ path: "/words/all" });
       } catch (error) {
         this.isWaitingRequest = false;
         this.$message.error(error.response.data.message);

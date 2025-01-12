@@ -52,7 +52,7 @@
       "add": "Add New Offer"
     },
     "Clients": {
-      "title": "Client Management",
+      "title": "App Users Management",
       "name": "Client Name",
       "moblie": "Mobile Number",
       "email": "E-mail",
@@ -755,7 +755,13 @@
       "type": "Type",
       "status": "Status",
       "actions": "Actions",
-      "message": "message"
+      "message": "message",
+      "complaint_name": "Complaint Name",
+      "complaint_mobile": "Complaint Mobile",
+      "reported_user_name": "Reported Username",
+      "reported_user_mobile": "Reported User Mobile",
+      "content": "Content",
+      "response": "Response"
     },
     "Roles": {
       "serialNumber": "Serial",
@@ -865,6 +871,10 @@
       "nameAr": "Reason (AR)",
       "nameEn": "Reason (EN)"
     },
+    "Words": {
+      "nameAr": "Word (AR)",
+      "nameEn": "Word (EN)"
+    },
     "subscriptions": {
       "serialNumber": "serial",
       "name": "name",
@@ -934,6 +944,8 @@
     "norecieve_book": "Indirect Booking",
     "replied": "Replied",
     "notReplied": "Not Replied",
+    "read": "Read",
+    "notRead": "Not Read",
     "request": "Request",
     "suggestion": "Suggestion",
     "inquiry": "Inquiry",
@@ -1097,9 +1109,12 @@
     "capacities_prices_for": "Capacities Prices for ({name})",
     "services_capacities": "Service Capacities",
     "services_additions": "Service Additions",
-    "addReason": "Add Cancelation Reason",
-    "editReason": "Edit Cancelation Reason",
-    "showReason": "Show Cancelation Reason"
+    "addReason": "Add Ban Reason",
+    "editReason": "Edit Ban Reason",
+    "showReason": "Show Ban Reason",
+    "addWord": "Add Offensive Word",
+    "editWord": "Edit Offensive Word",
+    "showWord": "Show Offensive Word"
   },
 
   "BUTTONS": {
@@ -1224,6 +1239,28 @@
   },
 
   "PLACEHOLDERS": {
+    "words": "Offensive Words Management",
+    "word": "The Word",
+    "complaints_management": "Complaints Management",
+    "bio": "Bio",
+    "account_type": "Account Type",
+    "height": "Height",
+    "weight": "Weight",
+    "skin_color": "Skin Color",
+    "education_level": "Education Level",
+    "profession": "Occupation",
+    "marital_status": "Marital Status",
+    "desire_for_children": "Desire for Children",
+    "readiness_for_marriage": "Readiness for Marriage",
+    "languages": "Languages",
+    "religious_sect": "Religious Sect",
+    "religious_commitment_level": "Religious Commitment Level",
+    "prayer_habits": "Prayer Habits",
+    "smoking": "Smoking",
+    "drinking_alcohol": "Drinking Alcohol",
+    "hobbies": "Hobbies",
+    "personal_traits": "Personal Traits",
+    "user_photos": "User Photos",
     "map_location": "Location on Map",
     "FinancialOrders": "Financial reports for orders",
     "financialpack": "Financial reports for packages",
@@ -1547,7 +1584,7 @@
     "services": "Services Management",
     "workplaces": "Workplaces Management",
     "count_finish_order": "Finished Orders Count",
-    "reasons": "Cancelation Reasons Management",
+    "reasons": "Ban Reasons Management",
     "count_uses": "Number of uses",
     "count_use": "Number of Subscribed Users",
     "count_uses_coupon": "Number of Uses",

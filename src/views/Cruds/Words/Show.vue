@@ -2,7 +2,7 @@
   <div class="crud_form_wrapper">
     <!-- Start:: Title -->
     <div class="form_title_wrapper">
-      <h4>{{ $t("TITLES.showReason") }}</h4>
+      <h4>{{ $t("TITLES.showWord") }}</h4>
     </div>
     <div class="col-12 text-end">
       <v-btn @click="$router.go(-1)" style="color: #3fa9f5">
@@ -19,14 +19,14 @@
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('TABLES.Reasons.nameAr')"
+            :placeholder="$t('TABLES.Words.nameAr')"
             v-model.trim="data.name"
             disabled
           />
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('TABLES.Reasons.nameEn')"
+            :placeholder="$t('TABLES.Words.nameEn')"
             v-model.trim="data.nameEn"
             disabled
           />
@@ -56,7 +56,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  name: "ShowReason",
+  name: "ShowWord",
 
   data() {
     return {
@@ -84,15 +84,15 @@ export default {
 
   methods: {
     // start show data
-    async showReason() {
+    async showWord() {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `ban-reasons/${this.$route.params.id}`,
+          url: `offensive-words/${this.$route.params.id}`,
         });
-        this.data.name = res.data.data.BanReason.name_ar;
-        this.data.nameEn = res.data.data.BanReason.name_en;
-        this.data.active = res.data.data.BanReason.is_active;
+        this.data.name = res.data.data.OffensiveWord.name_ar;
+        this.data.nameEn = res.data.data.OffensiveWord.name_en;
+        this.data.active = res.data.data.OffensiveWord.is_active;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);
@@ -103,7 +103,7 @@ export default {
 
   created() {
     // Start:: Fire Methods
-    this.showReason();
+    this.showWord();
     // End:: Fire Methods
   },
 };

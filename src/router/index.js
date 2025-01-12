@@ -149,6 +149,14 @@ import ShowReasons from "../views/Cruds/Reasons/Show.vue";
 import EditReasons from "../views/Cruds/Reasons/Edit.vue";
 // ============== End:: Reasons Routes
 
+// ============== Start:: Words Routes
+import WordsHome from "../views/Cruds/Words/Home.vue";
+import AllWords from "../views/Cruds/Words/ShowAll.vue";
+import CreateWords from "../views/Cruds/Words/Create.vue";
+import ShowWords from "../views/Cruds/Words/Show.vue";
+import EditWords from "../views/Cruds/Words/Edit.vue";
+// ============== End:: Words Routes
+
 // ============== Start:: Banks Routes
 import BanksHome from "../views/Cruds/Banks/Home.vue";
 import AllBanks from "../views/Cruds/Banks/ShowAll.vue";
@@ -186,6 +194,12 @@ import ClientsHome from "../views/Cruds/Clients/Home.vue";
 import AllClients from "../views/Cruds/Clients/ShowAll.vue";
 import ShowClients from "../views/Cruds/Clients/Show.vue";
 // ================= End:: Clients Routes
+
+// ================== Start:: Complaints Routes
+import ComplaintsHome from "../views/Cruds/Complaints/Home.vue";
+import AllComplaints from "../views/Cruds/Complaints/ShowAll.vue";
+import ShowComplaints from "../views/Cruds/Complaints/Show.vue";
+// ================= End:: Complaints Routes
 
 //=============== Start:: Order Desiginer Routes
 import OrdersRequestsHome from "../views/Cruds/OrdersRequests/Home.vue";
@@ -977,8 +991,8 @@ const routes = [
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "reasons index",
-                subject: "reasons",
+                action: "banreasons index",
+                subject: "banreasons",
               },
             },
           },
@@ -989,8 +1003,8 @@ const routes = [
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "reasons create",
-                subject: "reasons",
+                action: "banreasons create",
+                subject: "banreasons",
               },
             },
           },
@@ -1002,8 +1016,8 @@ const routes = [
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "reasons edit",
-                subject: "reasons",
+                action: "banreasons edit",
+                subject: "banreasons",
               },
             },
           },
@@ -1015,14 +1029,77 @@ const routes = [
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "reasons show",
-                subject: "reasons",
+                action: "banreasons show",
+                subject: "banreasons",
               },
             },
           },
         ],
       },
       // End:: reasons Config
+
+      // Start:: words  Config
+      {
+        path: "/words",
+        name: "words",
+        component: WordsHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Allwords",
+            component: AllWords,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "banwords index",
+                subject: "banwords",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createwords",
+            component: CreateWords,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "banwords create",
+                subject: "banwords",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editwords",
+            component: EditWords,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "banwords edit",
+                subject: "banwords",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Showwords",
+            component: ShowWords,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "banwords show",
+                subject: "banwords",
+              },
+            },
+          },
+        ],
+      },
+      // End:: words Config
 
       // Start:: workplaces  Config
       {
@@ -1424,6 +1501,44 @@ const routes = [
         ],
       },
       // End:: Clients Routes Config
+
+      // Start:: Complaints Routes Config
+      {
+        path: "/Complaints",
+        name: "ComplaintsHome",
+        component: ComplaintsHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "AllComplaints",
+            component: AllComplaints,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "complaints index",
+                subject: "complaints",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "ShowComplaints",
+            component: ShowComplaints,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "complaints show",
+                subject: "complaints",
+              },
+            },
+          },
+        ],
+      },
+      // End:: Complaints Routes Config
 
       // Start:: Order requests config
       {
