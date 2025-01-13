@@ -19,15 +19,10 @@ import AllRoles from "../views/Cruds/Roles/ShowAll.vue";
 import EditRole from "../views/Cruds/Roles/Edit.vue";
 import CreateRole from "../views/Cruds/Roles/Create.vue";
 // ============== End:: Roles Routes
-// ============== Start:: FinancialOrders Routes
-import FinancialOrdersHome from "../views/Cruds/FinancialOrders/Home.vue";
-import AllFinancialOrders from "../views/Cruds/FinancialOrders/ShowAll.vue";
-// ============== End:: FinancialOrders Routes
-
-// ============== Start:: FinancialPack Routes
-import FinancialPackHome from "../views/Cruds/FinancialPack/Home.vue";
-import AllFinancialPack from "../views/Cruds/FinancialPack/ShowAll.vue";
-// ============== End:: FinancialPack Routes
+// ============== Start:: FinancialReports Routes
+import FinancialReportsHome from "../views/Cruds/FinancialReports/Home.vue";
+import AllFinancialReports from "../views/Cruds/FinancialReports/ShowAll.vue";
+// ============== End:: FinancialReports Routes
 
 // ============== Start:: Admins Routes
 import ShowAdmin from "../views/Cruds/Admins/Show.vue";
@@ -75,71 +70,11 @@ import AllUsers from "../views/Cruds/Users/ShowAll.vue";
 import ShowUsers from "../views/Cruds/Users/Show.vue";
 // ============ End:: Users Routes
 
-// ============== Start:: Ads Routes
-import AdsHome from "../views/Cruds/Ads/Home.vue";
-import AllAds from "../views/Cruds/Ads/ShowAll.vue";
-import CreateAds from "../views/Cruds/Ads/Create.vue";
-import ShowAds from "../views/Cruds/Ads/Show.vue";
-import EditAds from "../views/Cruds/Ads/Edit.vue";
-// ============== End:: Ads Routes
-
-// ============== Start:: Products Routes
-import ProductsHome from "../views/Cruds/Products/Home.vue";
-import AllProducts from "../views/Cruds/Products/ShowAll.vue";
-import CreateProducts from "../views/Cruds/Products/Create.vue";
-import ShowProducts from "../views/Cruds/Products/Show.vue";
-import EditProducts from "../views/Cruds/Products/Edit.vue";
-// ============== End:: Products Routes
-
-// ============== Start:: Cities Routes
-import CitiesHome from "../views/Cruds/Cities/Home.vue";
-import AllCities from "../views/Cruds/Cities/ShowAll.vue";
-import CreateCities from "../views/Cruds/Cities/Create.vue";
-import ShowCities from "../views/Cruds/Cities/Show.vue";
-import EditCities from "../views/Cruds/Cities/Edit.vue";
-// ============== End:: Cities Routes
-
-// ============== Start:: Districts Routes
-import DistrictsHome from "../views/Cruds/Districts/Home.vue";
-import AllDistricts from "../views/Cruds/Districts/ShowAll.vue";
-import CreateDistricts from "../views/Cruds/Districts/Create.vue";
-import ShowDistricts from "../views/Cruds/Districts/Show.vue";
-import EditDistricts from "../views/Cruds/Districts/Edit.vue";
-// ============== End:: Cities Routes
-
-// ============== Start:: Regions Routes
-import RegionsHome from "../views/Cruds/Regions/Home.vue";
-import AllRegions from "../views/Cruds/Regions/ShowAll.vue";
-import CreateRegions from "../views/Cruds/Regions/Create.vue";
-import ShowRegions from "../views/Cruds/Regions/Show.vue";
-import EditRegions from "../views/Cruds/Regions/Edit.vue";
-// ============== End:: Regions Routes
-
-// ============== Start:: Services Routes
-import ServicesHome from "../views/Cruds/Services/Home.vue";
-import AllServices from "../views/Cruds/Services/ShowAll.vue";
-import CreateServices from "../views/Cruds/Services/Create.vue";
-import ShowServices from "../views/Cruds/Services/Show.vue";
-import EditServices from "../views/Cruds/Services/Edit.vue";
-// ============== End:: Services Routes
-
-// ============== Start:: Workplaces Routes
-import WorkplacesHome from "../views/Cruds/Workplaces/Home.vue";
-import AllWorkplaces from "../views/Cruds/Workplaces/ShowAll.vue";
-import CreateWorkplaces from "../views/Cruds/Workplaces/Create.vue";
-import ShowWorkplaces from "../views/Cruds/Workplaces/Show.vue";
-import EditWorkplaces from "../views/Cruds/Workplaces/Edit.vue";
-// ============== End:: Workplaces Routes
-
-// ============== Start:: WalletRequests Routes
-import RequestWalletsHome from "../views/Cruds/WalletRequests/Home.vue";
-import AllRequestWallets from "../views/Cruds/WalletRequests/ShowAll.vue";
-// ============== End:: WalletRequests Routes
-
-// ============== Start:: WalletHistory Routes
-import WalletHistoryHome from "../views/Cruds/WalletHistory/Home.vue";
-import AllWalletHistory from "../views/Cruds/WalletHistory/ShowAll.vue";
-// ============== End:: WalletRequests Routes
+// ============ Start:: Chats Routes
+import ChatsHome from "../views/Cruds/Chats/Home.vue";
+import AllChats from "../views/Cruds/Chats/ShowAll.vue";
+import ShowChats from "../views/Cruds/Chats/Show.vue";
+// ============ End:: Chats Routes
 
 // ============== Start:: Reasons Routes
 import ReasonsHome from "../views/Cruds/Reasons/Home.vue";
@@ -157,27 +92,77 @@ import ShowWords from "../views/Cruds/Words/Show.vue";
 import EditWords from "../views/Cruds/Words/Edit.vue";
 // ============== End:: Words Routes
 
-// ============== Start:: Banks Routes
-import BanksHome from "../views/Cruds/Banks/Home.vue";
-import AllBanks from "../views/Cruds/Banks/ShowAll.vue";
-import CreateBanks from "../views/Cruds/Banks/Create.vue";
-import ShowBanks from "../views/Cruds/Banks/Show.vue";
-import EditBanks from "../views/Cruds/Banks/Edit.vue";
-// ============== End:: Banks Routes
+// ============== Start:: Personal traits Routes
+import PersonaltraitsHome from "../views/Cruds/Personal_traits/Home.vue";
+import AllPersonaltraits from "../views/Cruds/Personal_traits/ShowAll.vue";
+import CreatePersonaltraits from "../views/Cruds/Personal_traits/Create.vue";
+import ShowPersonaltraits from "../views/Cruds/Personal_traits/Show.vue";
+import EditPersonaltraits from "../views/Cruds/Personal_traits/Edit.vue";
+// ============== End:: Personal traits Routes
 
-// ============== Start:: Packages Routes
-import PackagesHome from "../views/Cruds/Packages/Home.vue";
-import AllPackages from "../views/Cruds/Packages/ShowAll.vue";
-import CreatePackages from "../views/Cruds/Packages/Create.vue";
-import ShowPackages from "../views/Cruds/Packages/Show.vue";
-import EditPackages from "../views/Cruds/Packages/Edit.vue";
+// ============== Start:: Hobbies Routes
+import HobbiesHome from "../views/Cruds/Hobbies/Home.vue";
+import AllHobbies from "../views/Cruds/Hobbies/ShowAll.vue";
+import CreateHobbies from "../views/Cruds/Hobbies/Create.vue";
+import ShowHobbies from "../views/Cruds/Hobbies/Show.vue";
+import EditHobbies from "../views/Cruds/Hobbies/Edit.vue";
+// ============== End:: Hobbies Routes
+
+// ============== Start:: Countries Routes
+import CountriesHome from "../views/Cruds/Countries/Home.vue";
+import AllCountries from "../views/Cruds/Countries/ShowAll.vue";
+import CreateCountries from "../views/Cruds/Countries/Create.vue";
+import ShowCountries from "../views/Cruds/Countries/Show.vue";
+import EditCountries from "../views/Cruds/Countries/Edit.vue";
+// ============== End:: Countries Routes
+
+// ============== Start:: Cities Routes
+import CitiesHome from "../views/Cruds/Cities/Home.vue";
+import AllCities from "../views/Cruds/Cities/ShowAll.vue";
+import CreateCities from "../views/Cruds/Cities/Create.vue";
+import ShowCities from "../views/Cruds/Cities/Show.vue";
+import EditCities from "../views/Cruds/Cities/Edit.vue";
 // ============== End:: Cities Routes
 
-// ============== Start:: orders Routes
-import ordersHome from "../views/Cruds/Orders/Home.vue";
-import Allorders from "../views/Cruds/Orders/ShowAll.vue";
-import Showorders from "../views/Cruds/Orders/Show.vue";
-// ============== End:: orders Routes
+// ============== Start:: Nationalities Routes
+import NationalitiesHome from "../views/Cruds/Nationalities/Home.vue";
+import AllNationalities from "../views/Cruds/Nationalities/ShowAll.vue";
+import CreateNationalities from "../views/Cruds/Nationalities/Create.vue";
+import ShowNationalities from "../views/Cruds/Nationalities/Show.vue";
+import EditNationalities from "../views/Cruds/Nationalities/Edit.vue";
+// ============== End:: Nationalities Routes
+
+// ============== Start:: Religious sects Routes
+import ReligioussectsHome from "../views/Cruds/Religious_sects/Home.vue";
+import AllReligioussects from "../views/Cruds/Religious_sects/ShowAll.vue";
+import CreateReligioussects from "../views/Cruds/Religious_sects/Create.vue";
+import ShowReligioussects from "../views/Cruds/Religious_sects/Show.vue";
+import EditReligioussects from "../views/Cruds/Religious_sects/Edit.vue";
+// ============== End:: Religious sects Routes
+
+// ============== Start:: Spoken languages Routes
+import SpokenlanguagesHome from "../views/Cruds/Spoken_languages/Home.vue";
+import AllSpokenlanguages from "../views/Cruds/Spoken_languages/ShowAll.vue";
+import CreateSpokenlanguages from "../views/Cruds/Spoken_languages/Create.vue";
+import ShowSpokenlanguages from "../views/Cruds/Spoken_languages/Show.vue";
+import EditSpokenlanguages from "../views/Cruds/Spoken_languages/Edit.vue";
+// ============== End:: Spoken languages Routes
+
+// ============== Start:: Professions Routes
+import ProfessionsHome from "../views/Cruds/Professions/Home.vue";
+import AllProfessions from "../views/Cruds/Professions/ShowAll.vue";
+import CreateProfessions from "../views/Cruds/Professions/Create.vue";
+import ShowProfessions from "../views/Cruds/Professions/Show.vue";
+import EditProfessions from "../views/Cruds/Professions/Edit.vue";
+// ============== End:: Professions Routes
+
+// ============== Start:: Education levels Routes
+import EducationlevelsHome from "../views/Cruds/Education_levels/Home.vue";
+import AllEducationlevels from "../views/Cruds/Education_levels/ShowAll.vue";
+import CreateEducationlevels from "../views/Cruds/Education_levels/Create.vue";
+import ShowEducationlevels from "../views/Cruds/Education_levels/Show.vue";
+import EditEducationlevels from "../views/Cruds/Education_levels/Edit.vue";
+// ============== End:: Education levels Routes
 
 // ============== Start:: All Notifications Routes
 import AllNotifications from "../views/Cruds/Notifications/ShowAll.vue";
@@ -200,51 +185,6 @@ import ComplaintsHome from "../views/Cruds/Complaints/Home.vue";
 import AllComplaints from "../views/Cruds/Complaints/ShowAll.vue";
 import ShowComplaints from "../views/Cruds/Complaints/Show.vue";
 // ================= End:: Complaints Routes
-
-//=============== Start:: Order Desiginer Routes
-import OrdersRequestsHome from "../views/Cruds/OrdersRequests/Home.vue";
-import AllOrdersRequests from "../views/Cruds/OrdersRequests/ShowAll.vue";
-import ShowOrdersRequests from "../views/Cruds/OrdersRequests/Show.vue";
-//============== End:: Order Desiginer Routes
-
-// ============== Start:: MainCategories Routes
-import CategoriesHome from "../views/Cruds/MainCategories/Home.vue";
-import AllCategories from "../views/Cruds/MainCategories/ShowAll.vue";
-import CreateCategories from "../views/Cruds/MainCategories/Create.vue";
-import EditCategories from "../views/Cruds/MainCategories/Edit.vue";
-import ShowCategories from "../views/Cruds/MainCategories/Show.vue";
-// ============== End:: MainCategories Routes
-
-// ============== Start:: SubCategories Routes
-import SubCategoriesHome from "../views/Cruds/SubCategories/Home.vue";
-import AllSubCategories from "../views/Cruds/SubCategories/ShowAll.vue";
-import CreateSubCategories from "../views/Cruds/SubCategories/Create.vue";
-import EditSubCategories from "../views/Cruds/SubCategories/Edit.vue";
-import ShowSubCategories from "../views/Cruds/SubCategories/Show.vue";
-// ============== End:: SubCategories Routes
-// ============== Start:: Coupons Routes
-import CouponsHome from "../views/Cruds/Coupons/Home.vue";
-import AllCoupons from "../views/Cruds/Coupons/ShowAll.vue";
-import CreateCoupons from "../views/Cruds/Coupons/Create.vue";
-import ShowCoupons from "../views/Cruds/Coupons/Show.vue";
-import EditCoupons from "../views/Cruds/Coupons/Edit.vue";
-// ============== End:: Coupons Routes
-
-// ============== Start:: Capacities Routes
-import CapacitiesHome from "../views/Cruds/Capacities/Home.vue";
-import AllCapacities from "../views/Cruds/Capacities/ShowAll.vue";
-import CreateCapacities from "../views/Cruds/Capacities/Create.vue";
-import ShowCapacities from "../views/Cruds/Capacities/Show.vue";
-import EditCapacities from "../views/Cruds/Capacities/Edit.vue";
-// ============== End:: Capacities Routes
-
-// ============== Start:: ResidentialAdd Routes
-import ResidentialAddHome from "../views/Cruds/ResidentialAdd/Home.vue";
-import AllResidentialAdd from "../views/Cruds/ResidentialAdd/ShowAll.vue";
-import CreateResidentialAdd from "../views/Cruds/ResidentialAdd/Create.vue";
-import ShowResidentialAdd from "../views/Cruds/ResidentialAdd/Show.vue";
-import EditResidentialAdd from "../views/Cruds/ResidentialAdd/Edit.vue";
-// ============== End:: ResidentialAdd Routes
 
 // ============== Start:: Managements Routes
 import ManagementsHome from "../views/Cruds/Managements/Home.vue";
@@ -425,19 +365,19 @@ const routes = [
       },
       // End:: App Content Routes Config
 
-      // Start:: AllFinancialOrders Routes Config
+      // Start:: AllFinancialReports Routes Config
       {
-        path: "/financialorders",
-        name: "FinancialOrdersHome",
-        component: FinancialOrdersHome,
+        path: "/financialreports",
+        name: "FinancialReportsHome",
+        component: FinancialReportsHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "AllFinancialOrders",
-            component: AllFinancialOrders,
+            name: "AllFinancialReports",
+            component: AllFinancialReports,
             meta: {
               middleware: [auth],
               requiresPermission: {
@@ -448,29 +388,7 @@ const routes = [
           },
         ],
       },
-      {
-        path: "/financialpack",
-        name: "FinancialPackHome",
-        component: FinancialPackHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllFinancialPack",
-            component: AllFinancialPack,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "roles index",
-                subject: "roles",
-              },
-            },
-          },
-        ],
-      },
-      // End:: AllFinancialOrders Routes Config
+      // End:: AllFinancialReports Routes Config
       // Start:: Roles Routes Config
       {
         path: "/roles",
@@ -622,358 +540,43 @@ const routes = [
       },
       // End:: users Routes Config
 
-      // Start:: products  Config
+      // Start:: chats Routes Config
       {
-        path: "/products",
-        name: "products",
-        component: ProductsHome,
+        path: "/chats",
+        name: "ChatsHome",
+        component: ChatsHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "Allproducts",
-            component: AllProducts,
+            name: "AllChats",
+            component: AllChats,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "products index",
-                subject: "products",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "Createproducts",
-            component: CreateProducts,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "products create",
-                subject: "products",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "Editproducts",
-            component: EditProducts,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "products edit",
-                subject: "products",
+                action: "chats index",
+                subject: "chats",
               },
             },
           },
           {
             path: "show/:id",
-            name: "Showproducts",
-            component: ShowProducts,
+            name: "ShowChats",
+            component: ShowChats,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "products show",
-                subject: "products",
+                action: "chats show",
+                subject: "chats",
               },
             },
           },
         ],
       },
-      // End:: products Config
-
-      // Start:: orders  Config
-      {
-        path: "/orders",
-        name: "orders",
-        component: ordersHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "Allorders",
-            component: Allorders,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "orders index",
-                subject: "orders",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "Showorders",
-            component: Showorders,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "orders show",
-                subject: "orders",
-              },
-            },
-          },
-        ],
-      },
-      // End:: orders Config
-
-      // Start:: cities  Config
-      {
-        path: "/cities",
-        name: "cities",
-        component: CitiesHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "Allcities",
-            component: AllCities,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "cities index",
-                subject: "cities",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "Createcities",
-            component: CreateCities,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "cities create",
-                subject: "cities",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "Editcities",
-            component: EditCities,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "cities edit",
-                subject: "cities",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "Showcities",
-            component: ShowCities,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "cities show",
-                subject: "cities",
-              },
-            },
-          },
-        ],
-      },
-      // End:: cities Config
-
-      // Start:: districts  Config
-      {
-        path: "/districts",
-        name: "districts",
-        component: DistrictsHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "Alldistricts",
-            component: AllDistricts,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "districts index",
-                subject: "districts",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "Createdistricts",
-            component: CreateDistricts,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "districts create",
-                subject: "districts",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "Editdistricts",
-            component: EditDistricts,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "districts edit",
-                subject: "districts",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "Showdistricts",
-            component: ShowDistricts,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "districts show",
-                subject: "districts",
-              },
-            },
-          },
-        ],
-      },
-      // End:: districts Config
-
-      // Start:: RegionsHome  Config
-      {
-        path: "/areas",
-        name: "regions",
-        component: RegionsHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllRegions",
-            component: AllRegions,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "areas index",
-                subject: "areas",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateRegions",
-            component: CreateRegions,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "areas create",
-                subject: "areas",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditRegions",
-            component: EditRegions,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "areas edit",
-                subject: "areas",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowRegions",
-            component: ShowRegions,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "areas show",
-                subject: "areas",
-              },
-            },
-          },
-        ],
-      },
-      // End:: Regions Config
-
-      // Start:: services  Config
-      {
-        path: "/services",
-        name: "services",
-        component: ServicesHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "Allservices",
-            component: AllServices,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "services index",
-                subject: "services",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "Createservices",
-            component: CreateServices,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "services create",
-                subject: "services",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "Editservices",
-            component: EditServices,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "services edit",
-                subject: "services",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "Showservices",
-            component: ShowServices,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "services show",
-                subject: "services",
-              },
-            },
-          },
-        ],
-      },
-      // End:: services Config
+      // End:: chats Routes Config
 
       // Start:: reasons  Config
       {
@@ -1101,307 +704,572 @@ const routes = [
       },
       // End:: words Config
 
-      // Start:: workplaces  Config
+      // Start:: personaltraits  Config
       {
-        path: "/workplaces",
-        name: "workplaces",
-        component: WorkplacesHome,
+        path: "/personaltraits",
+        name: "personaltraits",
+        component: PersonaltraitsHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "Allworkplaces",
-            component: AllWorkplaces,
+            name: "Allpersonaltraits",
+            component: AllPersonaltraits,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "workplaces index",
-                subject: "workplaces",
+                action: "personaltraits index",
+                subject: "personaltraits",
               },
             },
           },
           {
             path: "create",
-            name: "Createworkplaces",
-            component: CreateWorkplaces,
+            name: "Createpersonaltraits",
+            component: CreatePersonaltraits,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "workplaces create",
-                subject: "workplaces",
+                action: "personaltraits create",
+                subject: "personaltraits",
               },
             },
           },
           {
             path: "edit/:id",
-            name: "Editworkplaces",
-            component: EditWorkplaces,
+            name: "Editpersonaltraits",
+            component: EditPersonaltraits,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "workplaces edit",
-                subject: "workplaces",
+                action: "personaltraits edit",
+                subject: "personaltraits",
               },
             },
           },
           {
             path: "show/:id",
-            name: "Showworkplaces",
-            component: ShowWorkplaces,
+            name: "Showpersonaltraits",
+            component: ShowPersonaltraits,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "workplaces show",
-                subject: "workplaces",
+                action: "personaltraits show",
+                subject: "personaltraits",
               },
             },
           },
         ],
       },
-      // End:: workplaces Config
+      // End:: personaltraits Config
 
-      // Start:: WalletRequests  Config
+      // Start:: hobbies  Config
       {
-        path: "/RequestWallets",
-        name: "RequestWallets",
-        component: RequestWalletsHome,
+        path: "/hobbies",
+        name: "hobbies",
+        component: HobbiesHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "AllRequestWallets",
-            component: AllRequestWallets,
+            name: "Allhobbies",
+            component: AllHobbies,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "requestwallets index",
-                subject: "requestwallets",
-              },
-            },
-          },
-        ],
-      },
-      // End:: WalletRequests Config
-
-      // Start:: WalletHistory  Config
-      {
-        path: "/WalletHistory",
-        name: "WalletHistory",
-        component: WalletHistoryHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all/:id",
-            name: "AllWalletHistory",
-            component: AllWalletHistory,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "users index",
-                subject: "users",
-              },
-            },
-          },
-        ],
-      },
-      // End:: WalletHistory Config
-
-      // Start:: banks  Config
-      {
-        path: "/banks",
-        name: "banks",
-        component: BanksHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "Allbanks",
-            component: AllBanks,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "banks index",
-                subject: "banks",
+                action: "hobbies index",
+                subject: "hobbies",
               },
             },
           },
           {
             path: "create",
-            name: "Createbanks",
-            component: CreateBanks,
+            name: "Createhobbies",
+            component: CreateHobbies,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "banks create",
-                subject: "banks",
+                action: "hobbies create",
+                subject: "hobbies",
               },
             },
           },
           {
             path: "edit/:id",
-            name: "Editbanks",
-            component: EditBanks,
+            name: "Edithobbies",
+            component: EditHobbies,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "banks edit",
-                subject: "banks",
+                action: "hobbies edit",
+                subject: "hobbies",
               },
             },
           },
           {
             path: "show/:id",
-            name: "Showbanks",
-            component: ShowBanks,
+            name: "Showhobbies",
+            component: ShowHobbies,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "banks show",
-                subject: "banks",
+                action: "hobbies show",
+                subject: "hobbies",
               },
             },
           },
         ],
       },
-      // End:: banks Config
+      // End:: hobbies Config
 
-      // Start:: packages  Config
+      // Start:: countries  Config
       {
-        path: "/packages",
-        name: "packages",
-        component: PackagesHome,
+        path: "/countries",
+        name: "countries",
+        component: CountriesHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "Allpackages",
-            component: AllPackages,
+            name: "Allcountries",
+            component: AllCountries,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "packages index",
-                subject: "packages",
+                action: "countries index",
+                subject: "countries",
               },
             },
           },
           {
             path: "create",
-            name: "Createpackages",
-            component: CreatePackages,
+            name: "Createcountries",
+            component: CreateCountries,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "packages create",
-                subject: "packages",
+                action: "countries create",
+                subject: "countries",
               },
             },
           },
           {
             path: "edit/:id",
-            name: "Editpackages",
-            component: EditPackages,
+            name: "Editcountries",
+            component: EditCountries,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "packages edit",
-                subject: "packages",
+                action: "countries edit",
+                subject: "countries",
               },
             },
           },
           {
             path: "show/:id",
-            name: "Showpackages",
-            component: ShowPackages,
+            name: "Showcountries",
+            component: ShowCountries,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "packages show",
-                subject: "packages",
+                action: "countries show",
+                subject: "countries",
               },
             },
           },
         ],
       },
-      // End:: packages Config
+      // End:: countries Config
 
-      // Start:: ads  Config
+      // Start:: cities  Config
       {
-        path: "/ads",
-        name: "ads",
-        component: AdsHome,
+        path: "/cities",
+        name: "cities",
+        component: CitiesHome,
         meta: {
           middleware: [auth],
         },
         children: [
           {
             path: "all",
-            name: "Allads",
-            component: AllAds,
+            name: "Allcities",
+            component: AllCities,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "advertisments index",
-                subject: "advertisments",
+                action: "cities index",
+                subject: "cities",
               },
             },
           },
           {
             path: "create",
-            name: "Createads",
-            component: CreateAds,
+            name: "Createcities",
+            component: CreateCities,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "advertisments create",
-                subject: "advertisments",
+                action: "cities create",
+                subject: "cities",
               },
             },
           },
           {
             path: "edit/:id",
-            name: "Editads",
-            component: EditAds,
+            name: "Editcities",
+            component: EditCities,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "advertisments edit",
-                subject: "advertisments",
+                action: "cities edit",
+                subject: "cities",
               },
             },
           },
           {
             path: "show/:id",
-            name: "Showads",
-            component: ShowAds,
+            name: "Showcities",
+            component: ShowCities,
             props: true,
             meta: {
               middleware: [auth],
               requiresPermission: {
-                action: "advertisments show",
-                subject: "advertisments",
+                action: "cities show",
+                subject: "cities",
               },
             },
           },
         ],
       },
-      // End:: ads Config
+      // End:: cities Config
+
+      // Start:: nationalities  Config
+      {
+        path: "/nationalities",
+        name: "nationalities",
+        component: NationalitiesHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Allnationalities",
+            component: AllNationalities,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "nationalities index",
+                subject: "nationalities",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createnationalities",
+            component: CreateNationalities,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "nationalities create",
+                subject: "nationalities",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editnationalities",
+            component: EditNationalities,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "nationalities edit",
+                subject: "nationalities",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Shownationalities",
+            component: ShowNationalities,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "nationalities show",
+                subject: "nationalities",
+              },
+            },
+          },
+        ],
+      },
+      // End:: nationalities Config
+
+      // Start:: religioussects  Config
+      {
+        path: "/religioussects",
+        name: "religioussects",
+        component: ReligioussectsHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Allreligioussects",
+            component: AllReligioussects,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "religioussects index",
+                subject: "religioussects",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createreligioussects",
+            component: CreateReligioussects,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "religioussects create",
+                subject: "religioussects",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editreligioussects",
+            component: EditReligioussects,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "religioussects edit",
+                subject: "religioussects",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Showreligioussects",
+            component: ShowReligioussects,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "religioussects show",
+                subject: "religioussects",
+              },
+            },
+          },
+        ],
+      },
+      // End:: religioussects Config
+
+      // Start:: spokenlanguages  Config
+      {
+        path: "/spokenlanguages",
+        name: "spokenlanguages",
+        component: SpokenlanguagesHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Allspokenlanguages",
+            component: AllSpokenlanguages,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "spokenlanguages index",
+                subject: "spokenlanguages",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createspokenlanguages",
+            component: CreateSpokenlanguages,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "spokenlanguages create",
+                subject: "spokenlanguages",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editspokenlanguages",
+            component: EditSpokenlanguages,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "spokenlanguages edit",
+                subject: "spokenlanguages",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Showspokenlanguages",
+            component: ShowSpokenlanguages,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "spokenlanguages show",
+                subject: "spokenlanguages",
+              },
+            },
+          },
+        ],
+      },
+      // End:: spokenlanguages Config
+
+      // Start:: professions  Config
+      {
+        path: "/professions",
+        name: "professions",
+        component: ProfessionsHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Allprofessions",
+            component: AllProfessions,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "professions index",
+                subject: "professions",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createprofessions",
+            component: CreateProfessions,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "professions create",
+                subject: "professions",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editprofessions",
+            component: EditProfessions,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "professions edit",
+                subject: "professions",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Showprofessions",
+            component: ShowProfessions,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "professions show",
+                subject: "professions",
+              },
+            },
+          },
+        ],
+      },
+      // End:: professions Config
+
+      // Start:: educationlevels  Config
+      {
+        path: "/educationlevels",
+        name: "educationlevels",
+        component: EducationlevelsHome,
+        meta: {
+          middleware: [auth],
+        },
+        children: [
+          {
+            path: "all",
+            name: "Alleducationlevels",
+            component: AllEducationlevels,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "educationlevels index",
+                subject: "educationlevels",
+              },
+            },
+          },
+          {
+            path: "create",
+            name: "Createeducationlevels",
+            component: CreateEducationlevels,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "educationlevels create",
+                subject: "educationlevels",
+              },
+            },
+          },
+          {
+            path: "edit/:id",
+            name: "Editeducationlevels",
+            component: EditEducationlevels,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "educationlevels edit",
+                subject: "educationlevels",
+              },
+            },
+          },
+          {
+            path: "show/:id",
+            name: "Showeducationlevels",
+            component: ShowEducationlevels,
+            props: true,
+            meta: {
+              middleware: [auth],
+              requiresPermission: {
+                action: "educationlevels show",
+                subject: "educationlevels",
+              },
+            },
+          },
+        ],
+      },
+      // End:: educationlevels Config
 
       // Start:: All Notifications Route Config
       {
@@ -1540,44 +1408,6 @@ const routes = [
       },
       // End:: Complaints Routes Config
 
-      // Start:: Order requests config
-      {
-        path: "/order-requests",
-        name: "OrdersRequestsHome",
-        component: OrdersRequestsHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllOrdersRequests",
-            component: AllOrdersRequests,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "users index",
-                subject: "users",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowOrdersRequests",
-            component: ShowOrdersRequests,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "users index",
-                subject: "users",
-              },
-            },
-          },
-        ],
-      },
-      // End:: Order requests config
-
       // Start:: questions Routes Config
       {
         path: "/questions",
@@ -1627,128 +1457,6 @@ const routes = [
         ],
       },
       // End:: questions Routes Config
-
-      // Start:: Categories Routes Config
-      {
-        path: "/main-categories",
-        name: "CategoriesHome",
-        component: CategoriesHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllCategories",
-            component: AllCategories,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateCategories",
-            component: CreateCategories,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditCategories",
-            component: EditCategories,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowCategories",
-            component: ShowCategories,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-        ],
-      },
-      // End:: Categories Routes Config
-
-      // Start:: sub Categories Routes Config
-      {
-        path: "/sub-categories",
-        name: "CategoriesHome",
-        component: SubCategoriesHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllSubCategories",
-            component: AllSubCategories,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateSubCategories",
-            component: CreateSubCategories,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditSubCategories",
-            component: EditSubCategories,
-            props: true,
-            meta: {
-              middleware: [auth],
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowSubCategories",
-            component: ShowSubCategories,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "categories index",
-                subject: "categories",
-              },
-            },
-          },
-        ],
-      },
-      // End:: sub Categories Routes Config
 
       // Start:: management Routes Config
       {
@@ -1808,195 +1516,6 @@ const routes = [
         ],
       },
       // End:: management Routes Config
-
-      // Start:: Capacities  Config
-      {
-        path: "/Capacities",
-        name: "CapacitiesHome",
-        component: CapacitiesHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllCapacitiesHome",
-            component: AllCapacities,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "capacities index",
-                subject: "capacities",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateCapacities",
-            component: CreateCapacities,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "capacities create",
-                subject: "capacities",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditCapacities",
-            component: EditCapacities,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "capacities edit",
-                subject: "capacities",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowCapacities",
-            component: ShowCapacities,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "capacities show",
-                subject: "capacities",
-              },
-            },
-          },
-        ],
-      },
-      // End:: Capacities Config
-
-      // Start:: ResidentialAdd  Config
-      {
-        path: "/ResidentialAdd",
-        name: "ResidentialAddHome",
-        component: ResidentialAddHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllResidentialAddHome",
-            component: AllResidentialAdd,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "additions index",
-                subject: "additions",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateResidentialAdd",
-            component: CreateResidentialAdd,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "additions create",
-                subject: "additions",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditResidentialAdd",
-            component: EditResidentialAdd,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "additions edit",
-                subject: "additions",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowResidentialAdd",
-            component: ShowResidentialAdd,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "additions show",
-                subject: "additions",
-              },
-            },
-          },
-        ],
-      },
-      // End:: ResidentialAdd Config
-
-      // Start:: Coupons  Config
-      {
-        path: "/coupons",
-        name: "CouponsHome",
-        component: CouponsHome,
-        meta: {
-          middleware: [auth],
-        },
-        children: [
-          {
-            path: "all",
-            name: "AllCoupons",
-            component: AllCoupons,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "coupons index",
-                subject: "coupons",
-              },
-            },
-          },
-          {
-            path: "create",
-            name: "CreateCoupons",
-            component: CreateCoupons,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "coupons create",
-                subject: "coupons",
-              },
-            },
-          },
-          {
-            path: "edit/:id",
-            name: "EditCoupons",
-            component: EditCoupons,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "coupons edit",
-                subject: "coupons",
-              },
-            },
-          },
-          {
-            path: "show/:id",
-            name: "ShowCoupons",
-            component: ShowCoupons,
-            props: true,
-            meta: {
-              middleware: [auth],
-              requiresPermission: {
-                action: "coupons show",
-                subject: "coupons",
-              },
-            },
-          },
-        ],
-      },
-      // End:: Coupons Config
 
       // Start:: App contact Routes Config
       {

@@ -22,7 +22,7 @@
             <div class="row justify-content-center align-items-center w-100">
               <!-- Start:: Name Input -->
               <base-input
-                col="4"
+                col="5"
                 type="text"
                 :placeholder="$t('PLACEHOLDERS.name')"
                 v-model.trim="filterOptions.name"
@@ -31,19 +31,10 @@
 
               <!-- Start:: Status Input -->
               <base-select-input
-                col="4"
+                col="5"
                 :optionsList="activeStatuses"
                 :placeholder="$t('PLACEHOLDERS.status')"
                 v-model="filterOptions.is_active"
-              />
-              <!-- End:: Status Input -->
-
-              <!-- Start:: Country Input -->
-              <base-select-input
-                col="4"
-                :optionsList="countries"
-                :placeholder="$t('PLACEHOLDERS.country')"
-                v-model="filterOptions.country_id"
               />
               <!-- End:: Status Input -->
             </div>
@@ -69,7 +60,7 @@
       <!--  =========== Start:: Table Title =========== -->
       <div class="table_title_wrapper">
         <div class="title_text_wrapper">
-          <h5>{{ $t("PLACEHOLDERS.cities") }}</h5>
+          <h5>{{ $t("PLACEHOLDERS.educationlevels") }}</h5>
           <button
             v-if="!filterFormIsActive"
             class="filter_toggler"
@@ -81,10 +72,10 @@
 
         <div
           class="title_route_wrapper"
-          v-if="$can('cities create', 'cities')"
+          v-if="$can('educationlevels create', 'educationlevels')"
         >
-          <router-link to="/cities/create">
-            {{ $t("TITLES.addCity") }}
+          <router-link to="/educationlevels/create">
+            {{ $t("TITLES.addEducationlevels") }}
           </router-link>
         </div>
       </div>
@@ -118,7 +109,7 @@
             class="activation"
             dir="ltr"
             style="z-index: 1"
-            v-if="$can('cities activate', 'cities')"
+            v-if="$can('educationlevels activate', 'educationlevels')"
           >
             <v-switch
               class="mt-2"
@@ -136,7 +127,7 @@
           <div class="actions">
             <a-tooltip
               placement="bottom"
-              v-if="$can('cities delete', 'cities')"
+              v-if="$can('educationlevels delete', 'educationlevels')"
             >
               <template slot="title">
                 <span>{{ $t("BUTTONS.delete") }}</span>
@@ -147,18 +138,16 @@
             </a-tooltip>
             <a-tooltip
               placement="bottom"
-              v-if="$can('cities edit', 'cities')"
+              v-if="$can('educationlevels edit', 'educationlevels')"
             >
               <template slot="title">
                 <span>{{ $t("BUTTONS.edit") }}</span>
               </template>
-              
-              
               <button class="btn_edit" @click="editItem(item)">
                 <i class="fal fa-edit"></i>
               </button>
             </a-tooltip>
-            <a-tooltip placement="bottom" v-if="$can('cities show', 'cities')">
+            <a-tooltip placement="bottom" v-if="$can('educationlevels show', 'educationlevels')">
               <template slot="title">
                 <span>{{ $t("BUTTONS.show") }}</span>
               </template>
@@ -166,7 +155,6 @@
                 <i class="fal fa-eye"></i>
               </button>
             </a-tooltip>
-
             <template v-else>
               <i
                 class="fal fa-lock-alt fs-5 blue-grey--text text--darken-1"
@@ -188,7 +176,6 @@
           <!-- End:: Image Modal -->
 
           <!-- Start:: Description Modal -->
-
           <description-modal
             v-if="dialogDescription"
             :modalIsOpen="dialogDescription"
@@ -254,7 +241,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "AllCities",
+  name: "AllEducationlevels",
 
   computed: {
     ...mapGetters({
@@ -288,8 +275,9 @@ export default {
       filterFormIsActive: false,
       filterOptions: {
         name: null,
-        country_id: null,
         is_active: null,
+        from_date: null,
+        to_date: null,
       },
       // End:: Filter Data
 
@@ -309,20 +297,8 @@ export default {
           align: "center",
         },
         {
-          text: this.$t("PLACEHOLDERS.country"),
-          value: "country.name",
-          sortable: false,
-          align: "center",
-        },
-        {
           text: this.$t("PLACEHOLDERS.status"),
           value: "is_active",
-          sortable: false,
-          align: "center",
-        },
-        {
-          text: this.$t("PLACEHOLDERS.created_at"),
-          value: "created_at",
           sortable: false,
           align: "center",
         },
@@ -334,7 +310,6 @@ export default {
         },
       ],
       tableRows: [],
-      countries: [],
       // End:: Table Data
 
       // Start:: Dialogs Control Data
@@ -344,6 +319,8 @@ export default {
       selectedDescriptionTextToShow: "",
       dialogDelete: false,
       itemToDelete: null,
+      dialogPrices: false,
+      pricesItem: null,
       // End:: Dialogs Control Data
 
       // Start:: Pagination Data
@@ -356,6 +333,8 @@ export default {
 
       regions: [],
       cites: [],
+      dialogPrices: false,
+      pricesItem: null,
     };
   },
 
@@ -369,31 +348,21 @@ export default {
   },
 
   methods: {
-    async getCountries() {
-      try {
-        let res = await this.$axios({
-          method: "GET",
-          url: `countries?page=0&limit=0`,
-        });
-        this.countries = res.data.data.data;
-      } catch (error) {
-        console.log(error.response.data.message);
-      }
-    },
     // Start:: Handel Filter
     async submitFilterForm() {
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/cities/all", query: { page: 1 } });
+        await this.$router.push({ path: "/educationlevels/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
     async resetFilter() {
       this.filterOptions.name = null;
-      this.filterOptions.country_id = null;
       this.filterOptions.is_active = null;
+      this.filterOptions.from_date = null;
+      this.filterOptions.to_date = null;
 
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/cities/all", query: { page: 1 } });
+        await this.$router.push({ path: "/educationlevels/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
@@ -408,7 +377,7 @@ export default {
         },
       });
 
-      // Scroll To Screen's Top After Get Cities
+      // Scroll To Screen's Top After Get educationlevels
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     },
@@ -418,22 +387,19 @@ export default {
         console.log("this.filterOptions.name",this.filterOptions)
         let res = await this.$axios({
           method: "GET",
-          url: "cities",
+          url: "education-levels",
           params: {
             page: this.paginations.current_page,
             name: this.filterOptions.name,
-            country_id: this.filterOptions.country_id?.id,
             is_active: this.filterOptions.is_active?.value,
           },
         });
         this.loading = false;
         this.tableRows = res.data.data.data;
-        // console.log(res.data.data.items?.id.city.name);
-        this.paginations.last_page = res.data.data.meta.last_page;
-        this.paginations.items_per_page = res.data.data.meta.per_page;
+        this.paginations.last_page = res.data.meta.last_page;
+        this.paginations.items_per_page = res.data.meta.per_page;
       } catch (error) {
         this.loading = false;
-        console.log(error.response.data.message);
       }
     },
     // End:: Set Table Rows
@@ -441,7 +407,6 @@ export default {
       this.dialogDescription = true;
       this.selectedDescriptionTextToShow = replay;
     },
-
     // Start:: Control Modals
     showImageModal(image) {
       this.dialogImage = true;
@@ -456,7 +421,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `cities/status/${item.id}`,
+          url: `education-levels/status/${item.id}`,
           data: REQUEST_DATA,
         });
         this.setTableRows();
@@ -470,10 +435,10 @@ export default {
     // ==================== Start:: Crud ====================
     // ===== Start:: End
     editItem(item) {
-      this.$router.push({ path: `/cities/edit/${item.id}` });
+      this.$router.push({ path: `/educationlevels/edit/${item.id}` });
     },
     showItem(item) {
-      this.$router.push({ path: `/cities/show/${item.id}` });
+      this.$router.push({ path: `/educationlevels/show/${item.id}` });
     },
     // ===== End:: End
 
@@ -487,7 +452,7 @@ export default {
       try {
         await this.$axios({
           method: "DELETE",
-          url: `cities/${this.itemToDelete.id}`,
+          url: `education-levels/${this.itemToDelete.id}`,
         });
         this.dialogDelete = false;
         this.setTableRows();
@@ -510,7 +475,6 @@ export default {
       this.paginations.current_page = +this.$route.query.page;
     }
     this.setTableRows();
-    this.getCountries()
     // End:: Fire Methods
   },
 };

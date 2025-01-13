@@ -60,7 +60,7 @@
           />
           <!-- End:: Ar Name Input -->
 
-          <!-- Start:: Phone Input -->
+          <!-- Start:: Input -->
           <base-input
             col="12"
             type="text"
@@ -69,7 +69,18 @@
             disabled
             class="disabled_input"
           />
-          <!-- End:: Phone Input -->
+          <!-- End:: Input -->
+
+          <!-- Start:: Input -->
+          <base-input
+            col="12"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.partner_preferences')"
+            v-model.trim="data.about_partner"
+            disabled
+            class="disabled_input"
+          />
+          <!-- End:: Input -->
 
           <!-- Start:: Second Phone Input -->
           <!-- <base-input col="4" type="tel" :placeholder="$t('PLACEHOLDERS.secondPhone')" v-model.trim="data.secondPhone"
@@ -346,6 +357,7 @@ export default {
         this.data.images = res.data.data.Client.images;
         this.data.name = res.data.data.Client.user_name;
         this.data.bio = res.data.data.Client.user_bio;
+        this.data.about_partner = res.data.data.Client.about_partner;
         this.data.country = res.data.data.Client.country;
         this.data.age = res.data.data.Client.age;
         this.data.account_type = res.data.data.Client.trans_account_type;

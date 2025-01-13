@@ -163,118 +163,50 @@
       <div
         class="home_route"
         @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('users index', 'users')"
+        v-if="$can('clients index', 'clients')"
       >
-        <router-link to="/users/all">
+        <router-link to="/Clients/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/users.svg"
+              src="@/assets/media/icons/ui_icons/clients.svg"
               alt="icon"
               width="40"
               height="40"
             />
           </span>
           <span class="route_text">
-            {{ $t("PLACEHOLDERS.manage_users") }}
+            {{ $t("SIDENAV.Clients.title") }}
           </span>
         </router-link>
       </div>
       <!-- End:: users Route -->
-
-      <!-- Start:: main_sections Route -->
+      <!-- Start:: chats Route -->
       <div
         class="home_route"
         @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('categories index', 'categories')"
+        v-if="$can('chats index', 'chats')"
       >
-        <router-link to="/main-categories/all">
+        <router-link to="/chats/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/bill.svg"
+              src="@/assets/media/icons/ui_icons/messages.svg"
               alt="icon"
               width="40"
               height="40"
             />
           </span>
           <span class="route_text">
-            {{ $t("PLACEHOLDERS.main_sections") }}
+            {{ $t("PLACEHOLDERS.manage_chats") }}
           </span>
         </router-link>
       </div>
-      <!-- End:: main_sections Route -->
-
-      <!-- Start:: sub_sections Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('categories index', 'categories')"
-      >
-        <router-link to="/sub-categories/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/folder.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.sub_sections") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: sub_sections Route -->
-
-      <!-- Start:: products Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('products index', 'products')"
-      >
-        <router-link to="/products/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/exchange.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.products") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: products Route -->
-
+      <!-- End:: chats Route -->
       <!-- Start:: orders Route -->
       <div
         class="home_route"
         @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('orders index', 'orders')"
       >
-        <router-link to="/orders/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/paymentmethods.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.orders") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: orders Route -->
-      <!-- Start:: orders Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('coupons index', 'coupons')"
-      >
-        <router-link to="/financialorders/all">
+        <router-link to="/financialreports/all">
           <span class="route_icon">
             <img
               src="@/assets/media/icons/ui_icons/budgeting.png"
@@ -284,54 +216,11 @@
             />
           </span>
           <span class="route_text">
-            {{ $t("PLACEHOLDERS.FinancialOrders") }}
+            {{ $t("PLACEHOLDERS.FinancialReports") }}
           </span>
         </router-link>
       </div>
       <!-- End:: orders Route -->
-      <!-- Start:: orders Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('coupons index', 'coupons')"
-      >
-        <router-link to="/financialpack/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/budgeting.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.financialpack") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: orders Route -->
-      <!-- Start:: orders Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('coupons index', 'coupons')"
-      >
-        <router-link to="/coupons/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/coupon.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.coupons") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: orders Route -->
-
       <!-- Start:: reasons Route -->
       <div
         class="home_route"
@@ -341,7 +230,7 @@
         <router-link to="/reasons/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/cancel.png"
+              src="@/assets/media/icons/ui_icons/authourization.svg"
               alt="icon"
               width="40"
               height="40"
@@ -376,74 +265,8 @@
       </div>
       <!-- End:: Words Route -->
 
-      <!-- Start:: RequestWallets Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('requestwallets index', 'requestwallets')"
-      >
-        <router-link to="/RequestWallets/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/bill.svg"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("SIDENAV.Users.wallet-settlement-requests") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: RequestWallets Route -->
-
-      <!-- Start:: workplaces Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('workplaces index', 'workplaces')"
-      >
-        <router-link to="/workplaces/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/house.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.workplaces") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: workplaces Route -->
-
-      <!-- Start:: services Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('services index', 'services')"
-      >
-        <router-link to="/services/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/service.svg"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.services") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: services Route -->
-
-      <!-- Start:: places Route -->
-      <!-- <div class="side_routes_wrapper">
+      <!-- Start:: personal Route -->
+      <div class="side_routes_wrapper">
         <a-menu
           style="width: 100%"
           mode="vertical"
@@ -455,7 +278,7 @@
           "
         >
           <a-sub-menu
-            v-for="item in sideNavbarList_Places"
+            v-for="item in sideNavbarList_Personal"
             :key="item.key"
             :data-type="!item.children ? 'single_route' : ''"
             style="border: none;"
@@ -484,72 +307,7 @@
             </template>
           </a-sub-menu>
         </a-menu>
-      </div> -->
-      <!-- Start:: places Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('districts index', 'districts')"
-      >
-        <router-link to="/districts/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/village.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.districts") }}
-          </span>
-        </router-link>
       </div>
-      <!-- End:: districts Route -->
-
-      <!-- Start:: banks Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('banks index', 'banks')"
-      >
-        <router-link to="/banks/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/bank.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("SIDENAV.banks.title") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: banks Route -->
-
-      <!-- Start:: packages Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('packages index', 'packages')"
-      >
-        <router-link to="/packages/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/subscription.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("PLACEHOLDERS.package_management") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: packages Route -->
 
       <!-- Start:: managements Route -->
       <div
@@ -572,29 +330,6 @@
         </router-link>
       </div>
       <!-- End:: managements Route -->
-
-      <!-- Start:: users Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('clients index', 'clients')"
-      >
-        <router-link to="/Clients/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/clients.svg"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("SIDENAV.Clients.title") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: users Route -->
-
       <!-- Start:: complaints Route -->
       <div
         class="home_route"
@@ -617,28 +352,6 @@
       </div>
       <!-- End:: complaints Route -->
 
-      <!-- Start:: ads Route -->
-      <div
-        class="home_route"
-        @click="$emit('fireToggleNavDrawerEmit')"
-        v-if="$can('advertisments index', 'advertisments')"
-      >
-        <router-link to="/Ads/all">
-          <span class="route_icon">
-            <img
-              src="@/assets/media/icons/ui_icons/ads.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </span>
-          <span class="route_text">
-            {{ $t("SIDENAV.ads.title") }}
-          </span>
-        </router-link>
-      </div>
-      <!-- End:: ads Route -->
-
       <!-- Start:: notifications Route -->
       <div
         class="home_route"
@@ -660,6 +373,28 @@
         </router-link>
       </div>
       <!-- End:: notifications Route -->
+
+      <!-- Start:: faqs Route -->
+      <div
+        class="home_route"
+        @click="$emit('fireToggleNavDrawerEmit')"
+        v-if="$can('faqs index', 'faqs')"
+      >
+        <router-link to="/questions/all">
+          <span class="route_icon">
+            <img
+              src="@/assets/media/icons/ui_icons/question.png"
+              alt="icon"
+              width="40"
+              height="40"
+            />
+          </span>
+          <span class="route_text">
+            {{ $t("SIDENAV.questions.title") }}
+          </span>
+        </router-link>
+      </div>
+      <!-- End:: faqs Route -->
 
       <!-- Start:: app settings Route -->
       <div
@@ -828,7 +563,7 @@ export default {
       this.sideNavbarList_Admins.forEach((element) => {
         extractedKeys.push(element["key"]);
       });
-      this.sideNavbarList_Places.forEach((element) => {
+      this.sideNavbarList_Personal.forEach((element) => {
         extractedKeys.push(element["key"]);
       });
       this.sideNavbarList.forEach((element) => {
@@ -873,26 +608,74 @@ export default {
         },
       ],
 
-      sideNavbarList_Places: [
+      sideNavbarList_Personal: [
         {
-          key: "dashboard",
-          title: this.$t("PLACEHOLDERS.places"),
-          icon: require("@/assets/media/icons/ui_icons/country.png"),
+          key: "personal",
+          title: this.$t("PLACEHOLDERS.personal_attributes"),
+          icon: require("@/assets/media/icons/ui_icons/users.svg"),
           hasPermission:
-            this.$can("areas index", "areas") ||
-            this.$can("cities index", "cities"),
+            this.$can("personaltraits index", "personaltraits") ||
+            this.$can("hobbies index", "hobbies") ||
+            this.$can("countries index", "countries") ||
+            this.$can("nationalities index", "nationalities") ||
+            this.$can("religioussects index", "religioussects") ||
+            this.$can("spokenlanguages index", "spokenlanguages") ||
+            this.$can("professions index", "professions") ||
+            this.$can("educationlevels index", "educationlevels"),
           children: [
             {
-              key: "areas",
-              title: this.$t("PLACEHOLDERS.manage_regions"),
-              route: "/areas/all",
-              hasPermission: this.$can("areas index", "areas"),
+              key: "personaltraits",
+              title: this.$t("PLACEHOLDERS.personaltraits"),
+              route: "/personaltraits/all",
+              hasPermission: this.$can("personaltraits index", "personaltraits"),
+            },
+            {
+              key: "hobbies",
+              title: this.$t("PLACEHOLDERS.hobbies"),
+              route: "/hobbies/all",
+              hasPermission: this.$can("hobbies index", "hobbies"),
+            },
+            {
+              key: "countries",
+              title: this.$t("PLACEHOLDERS.countries"),
+              route: "/countries/all",
+              hasPermission: this.$can("countries index", "countries"),
             },
             {
               key: "cities",
               title: this.$t("PLACEHOLDERS.cities"),
               route: "/cities/all",
               hasPermission: this.$can("cities index", "cities"),
+            },
+            {
+              key: "nationalities",
+              title: this.$t("PLACEHOLDERS.nationalities"),
+              route: "/nationalities/all",
+              hasPermission: this.$can("nationalities index", "nationalities"),
+            },
+            {
+              key: "religioussects",
+              title: this.$t("PLACEHOLDERS.religioussects"),
+              route: "/religioussects/all",
+              hasPermission: this.$can("religioussects index", "religioussects"),
+            },
+            {
+              key: "spokenlanguages",
+              title: this.$t("PLACEHOLDERS.spokenlanguages"),
+              route: "/spokenlanguages/all",
+              hasPermission: this.$can("spokenlanguages index", "spokenlanguages"),
+            },
+            {
+              key: "professions",
+              title: this.$t("PLACEHOLDERS.professions"),
+              route: "/professions/all",
+              hasPermission: this.$can("professions index", "professions"),
+            },
+            {
+              key: "educationlevels",
+              title: this.$t("PLACEHOLDERS.educationlevels"),
+              route: "/educationlevels/all",
+              hasPermission: this.$can("educationlevels index", "educationlevels"),
             },
           ],
         },
@@ -935,7 +718,7 @@ export default {
             },
             {
               key: "AboutUs",
-              title: this.$t("SIDENAV.AppContent.aboutUs"),
+              title: this.$t("TITLES.aboutUs"),
               route: "/app-content/about-us",
               hasPermission: this.$can("settings create", "settings"),
             },
@@ -949,12 +732,6 @@ export default {
               key: "privacyPolicy",
               title: this.$t("SIDENAV.AppContent.privacyPolicy"),
               route: "/app-content/policy",
-              hasPermission: this.$can("settings create", "settings"),
-            },
-            {
-              key: "booking-terms",
-              title: this.$t("SIDENAV.Units.booking_condition"),
-              route: "/app-content/booking-terms",
               hasPermission: this.$can("settings create", "settings"),
             },
             {

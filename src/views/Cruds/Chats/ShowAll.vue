@@ -10,19 +10,33 @@
         <div class="filter_title_wrapper">
           <h5>{{ $t("TITLES.searchBy") }}</h5>
         </div>
-
         <div class="filter_form_wrapper">
           <form @submit.prevent="submitFilterForm">
             <div class="row justify-content-center align-items-center w-100">
-              <!-- Start:: Name Input -->
-              <base-input col="6" type="text" :placeholder="$t('SIDENAV.questions.name')"
-                v-model.trim="filterOptions.title" />
-              <!-- End:: Name Input -->
-
-              <!-- Start:: Status Input -->
-              <base-select-input col="6" :optionsList="activeStatuses" :placeholder="$t('PLACEHOLDERS.status')"
-                v-model="filterOptions.is_active" />
-              <!-- End:: Status Input -->
+              <!-- Start:: Input -->
+              <base-input col="5" type="text" :placeholder="$t('PLACEHOLDERS.sender_name_')"
+                v-model.trim="filterOptions.sender_name" />
+              <!-- End:: Input -->
+              <!-- Start:: Input -->
+              <base-input col="5" type="tel" :placeholder="$t('PLACEHOLDERS.receiver_name')"
+                v-model.trim="filterOptions.receiver_name" />
+              <!-- End:: Input -->
+              <!-- Start:: Start Date Input -->
+              <base-picker-input
+                col="5"
+                type="date"
+                :placeholder="$t('PLACEHOLDERS.startDate_')"
+                v-model.trim="filterOptions.from_date"
+              />
+              <!-- End:: Start Date Input -->
+              <!-- Start:: End Date Input -->
+              <base-picker-input
+                col="5"
+                type="date"
+                :placeholder="$t('PLACEHOLDERS.endDate_')"
+                v-model.trim="filterOptions.to_date"
+              />
+              <!-- End:: End Date Input -->
             </div>
 
             <div class="btns_wrapper">
@@ -41,18 +55,13 @@
       <!--  =========== Start:: Table Title =========== -->
       <div class="table_title_wrapper">
         <div class="title_text_wrapper">
-          <h5>{{ $t("SIDENAV.questions.title") }}</h5>
+          <h5>{{ $t("PLACEHOLDERS.manage_chats") }}</h5>
           <button v-if="!filterFormIsActive" class="filter_toggler"
             @click.stop="filterFormIsActive = !filterFormIsActive">
             <i class="fal fa-search"></i>
           </button>
         </div>
 
-        <div class="title_route_wrapper" v-if="$can('faqs create', 'faqs')">
-          <router-link to="/questions/create">
-            {{ $t("SIDENAV.questions.add") }}
-          </router-link>
-        </div>
       </div>
       <!--  =========== End:: Table Title =========== -->
 
@@ -67,6 +76,19 @@
         <!-- Start:: No Data State -->
 
         <!-- Start:: Item Image -->
+        <template v-slot:[`item.image`]="{ item }">
+          <div class="table_image_wrapper">
+            <h6 class="text-danger" v-if="!item.image">
+              {{ $t("TABLES.noData") }}
+            </h6>
+
+            <button class="my-1" @click="showImageModal(item.image)" v-else>
+              <img class="rounded" :src="item.image" :alt="item.name" width="60" height="60" />
+            </button>
+          </div>
+        </template>
+        <!-- End:: Item Image -->
+        <!-- Start:: Item Image -->
         <template v-slot:[`item.id`]="{ item, index }">
           <div class="table_image_wrapper">
             <h6 class="text-danger" v-if="!item.id">
@@ -74,58 +96,50 @@
             </h6>
             <p v-else>
               {{
-                (paginations.current_page - 1) * paginations.items_per_page +
-                index +
-                1
-              }}
+        (paginations.current_page - 1) * paginations.items_per_page +
+        index +
+        1
+      }}
             </p>
           </div>
         </template>
         <!-- End:: Item Image -->
 
-        <template v-slot:[`item.answer`]="{ item }">
-          <template>
-            <h6 class="text-danger" v-if="item.answer.length === 0"> {{ $t("TABLES.noData") }} </h6>
-            <div class="actions" v-else>
-              <button class="btn_show" @click="showReplayModal(item.answer)">
-                <i class="fal fa-file-alt"></i>
-              </button>
-            </div>
-          </template>
+        <!-- Start:: Name -->
+        <template v-slot:[`item.name`]="{ item }">
+          <span class="text-danger" v-if="!item.name">
+            {{ $t("TABLES.noData") }}
+          </span>
+          <span v-else> {{ item.name }} </span>
         </template>
-       
+        <!-- End:: Name -->
 
-        <!-- Start:: Activation -->
-        <template v-slot:[`item.is_active`]="{ item }">
-          <!-- v-if="permissions.activate" -->
-          <div class="activation" dir="ltr" style="z-index: 1" v-if="$can('faqs activate', 'faqs')">
-            <v-switch class="mt-2" color="success" v-model="item.is_active" hide-details
-              @change="changeActivationStatus(item)"></v-switch>
-          </div>
+        <!-- Start:: Phone -->
+        <template v-slot:[`item.phone`]="{ item }">
+          <span class="text-danger" v-if="!item.phone">
+            {{ $t("TABLES.noData") }}
+          </span>
+          <span v-else> {{ item.phone || '-' }} </span>
         </template>
-        <!-- End:: Activation -->
+        <!-- End:: Phone -->
+
+        <!-- Start:: Email -->
+        <template v-slot:[`item.email`]="{ item }">
+          <span> {{ item.email || '-' }} </span>
+        </template>
+        <!-- End:: Email -->
 
         <!-- Start:: Actions -->
         <template v-slot:[`item.actions`]="{ item }">
           <div class="actions">
-            <a-tooltip placement="bottom" v-if="$can('faqs edit', 'faqs')">
+            <a-tooltip placement="bottom" v-if="$can('chats show', 'chats')">
               <template slot="title">
-                <span>{{ $t("BUTTONS.edit") }}</span>
+                <span>{{ $t("BUTTONS.show") }}</span>
               </template>
-              <button class="btn_edit" @click="editItem(item)">
-                <i class="fal fa-edit"></i>
+              <button class="btn_show" @click="showItem(item)">
+                <i class="fal fa-eye"></i>
               </button>
             </a-tooltip>
-
-            <a-tooltip placement="bottom" v-if="$can('faqs delete', 'faqs')">
-              <template slot="title">
-                <span>{{ $t("BUTTONS.delete") }}</span>
-              </template>
-              <button class="btn_delete" @click="selectDeleteItem(item)">
-                <i class="fal fa-trash-alt"></i>
-              </button>
-            </a-tooltip>
-
             <template v-else>
               <i class="fal fa-lock-alt fs-5 blue-grey--text text--darken-1"></i>
             </template>
@@ -139,36 +153,6 @@
           <image-modal v-if="dialogImage" :modalIsOpen="dialogImage" :modalImage="selectedItemImage"
             @toggleModal="dialogImage = !dialogImage" />
           <!-- End:: Image Modal -->
-
-          <!-- Start:: Description Modal -->
-
-          <description-modal v-if="dialogDescription" :modalIsOpen="dialogDescription"
-            :modalDesc="selectedDescriptionTextToShow" @toggleModal="dialogDescription = !dialogDescription" />
-          <!-- End:: Description Modal -->
-
-          <!-- Start:: Delete Modal -->
-          <v-dialog v-model="dialogDelete">
-            <v-card>
-              <v-card-title class="text-h5 justify-center" v-if="itemToDelete">
-                {{
-                  $t("TITLES.DeleteConfirmingMessage", {
-                    name: itemToDelete.question,
-                  })
-                }}
-              </v-card-title>
-              <v-card-actions>
-                <v-btn class="modal_confirm_btn" @click="confirmDeleteItem">{{
-                  $t("BUTTONS.ok")
-                }}</v-btn>
-
-                <v-btn class="modal_cancel_btn" @click="dialogDelete = false">{{
-                  $t("BUTTONS.cancel")
-                }}</v-btn>
-                <v-spacer></v-spacer>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-          <!-- End:: Delete Modal -->
         </template>
         <!-- ======================== End:: Dialogs ======================== -->
       </v-data-table>
@@ -181,8 +165,8 @@
       <div class="pagination_container text-center mt-3 mb-0">
         <v-pagination class="py-0" square v-model="paginations.current_page" :length="paginations.last_page"
           :total-visible="6" @input="updateRouterQueryParam($event)" :prev-icon="getAppLocale == 'ar' ? 'fal fa-angle-right' : 'fal fa-angle-left'
-            " :next-icon="getAppLocale == 'ar' ? 'fal fa-angle-left' : 'fal fa-angle-right'
-    " />
+        " :next-icon="getAppLocale == 'ar' ? 'fal fa-angle-left' : 'fal fa-angle-right'
+        " />
       </div>
     </template>
     <!-- End:: Pagination -->
@@ -190,10 +174,10 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
-  name: "AllGoldenDeals",
+  name: "AllChats",
 
   computed: {
     ...mapGetters({
@@ -202,6 +186,11 @@ export default {
 
     activeStatuses() {
       return [
+      {
+          id: null,
+          name: this.$t("STATUS.all"),
+          value: null,
+        },
         {
           id: 1,
           name: this.$t("STATUS.active"),
@@ -214,25 +203,6 @@ export default {
         },
       ];
     },
-    buyproduct() {
-      return [
-        {
-          id: null,
-          name: this.$t("STATUS.in_cart"),
-          value: "in_cart",
-        },
-        {
-          id: 1,
-          name: this.$t("STATUS.buy"),
-          value: "bought",
-        },
-        {
-          id: 2,
-          name: this.$t("STATUS.notBuy"),
-          value: "active",
-        },
-      ];
-    }
   },
 
   data() {
@@ -245,8 +215,10 @@ export default {
       // Start:: Filter Data
       filterFormIsActive: false,
       filterOptions: {
-        title: null,
-        is_active: null
+        sender_name: null,
+        receiver_name: null,
+        from_date: null,
+        to_date: null,
       },
       // End:: Filter Data
 
@@ -257,31 +229,32 @@ export default {
           text: this.$t("TABLES.Admins.serialNumber"),
           value: "id",
           align: "center",
+          width: "80",
           sortable: false,
         },
         {
-          text: this.$t("SIDENAV.questions.name"),
-          value: "question",
-          sortable: false,
-          align: "center",
-        },
-        {
-          text: this.$t("SIDENAV.questions.answer"),
-          value: "answer",
-          sortable: false,
-          align: "center",
-        },
-        {
-          text: this.$t("PLACEHOLDERS.status"),
-          value: "is_active",
+          text: this.$t("PLACEHOLDERS.sender_name_"),
+          value: "sender_name",
           align: "center",
           sortable: false,
         },
         {
-          text: this.$t("SIDENAV.questions.date"),
-          value: "created_at",
-          sortable: false,
+          text: this.$t("PLACEHOLDERS.receiver_name"),
+          value: "receiver_name",
           align: "center",
+          sortable: false,
+        },
+        {
+          text: this.$t("PLACEHOLDERS.last_message"),
+          value: "last_message",
+          align: "center",
+          sortable: false,
+        },
+        {
+          text: this.$t("PLACEHOLDERS.last_message_date"),
+          value: "last_message_date",
+          align: "center",
+          sortable: false,
         },
         {
           text: this.$t("TABLES.Admins.actions"),
@@ -296,10 +269,6 @@ export default {
       // Start:: Dialogs Control Data
       dialogImage: false,
       selectedItemImage: null,
-      dialogDescription: false,
-      selectedDescriptionTextToShow: "",
-      dialogDelete: false,
-      itemToDelete: null,
       // End:: Dialogs Control Data
 
       // Start:: Pagination Data
@@ -310,8 +279,13 @@ export default {
       },
       // End:: Pagination Data
 
-      regions: [],
-      cites: []
+      // Start:: Page Permissions
+      permissions: null,
+      // Start:: Page Permissions
+      button_waiting: false,
+      balance: null,
+      note: null,
+      item_id: null,
     };
   },
 
@@ -328,15 +302,17 @@ export default {
     // Start:: Handel Filter
     async submitFilterForm() {
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/questions/all", query: { page: 1 } });
+        await this.$router.push({ path: "/chats/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
     async resetFilter() {
-      this.filterOptions.title = null;
-      this.filterOptions.is_active = null;
+      this.filterOptions.sender_name = null;
+      this.filterOptions.receiver_name = null;
+      this.filterOptions.from_date = null;
+      this.filterOptions.to_date = null;
       if (this.$route.query.page !== "1") {
-        await this.$router.push({ path: "/questions/all", query: { page: 1 } });
+        await this.$router.push({ path: "/chats/all", query: { page: 1 } });
       }
       this.setTableRows();
     },
@@ -360,28 +336,26 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: "faqs",
+          url: "chats",
           params: {
             page: this.paginations.current_page,
-            question: this.filterOptions.title,
-            is_active: this.filterOptions.is_active?.value,
+            sender_name: this.filterOptions.sender_name,
+            receiver_name: this.filterOptions.receiver_name,
+            "date[from]": this.filterOptions.from_date,
+            "date[to]": this.filterOptions.to_date,
           },
         });
         this.loading = false;
+        // console.log("All Data ==>", res.data.data);
         this.tableRows = res.data.data.data;
-        // console.log(res.data.data.items?.id.product.name);
-        this.paginations.last_page = res.data.meta.last_page;
-        this.paginations.items_per_page = res.data.meta.per_page;
+        this.paginations.last_page = res.data.data.meta.last_page;
+        this.paginations.items_per_page = res.data.data.meta.per_page;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);
       }
     },
     // End:: Set Table Rows
-    showReplayModal(replay) {
-      this.dialogDescription = true;
-      this.selectedDescriptionTextToShow = replay;
-    },
 
     // Start:: Control Modals
     showImageModal(image) {
@@ -389,54 +363,12 @@ export default {
       this.selectedItemImage = image;
     },
     // End:: Control Modals
-    // Start:: Change Activation Status
-    async changeActivationStatus(item) {
-      const REQUEST_DATA = new FormData();
-      // Start:: Append Request Data
-      // REQUEST_DATA.append("_method", "PUT");
-      try {
-        await this.$axios({
-          method: "POST",
-          url: `faqs/status/${item.id}`,
-          data: REQUEST_DATA,
-        });
-        this.setTableRows();
-        this.$message.success(this.$t("MESSAGES.changeActivation"));
-      } catch (error) {
-        this.$message.error(error.response.data.message);
-      }
-    },
-    // End:: Change Activation Status
 
-    // ==================== Start:: Crud ====================
     // ===== Start:: End
-    editItem(item) {
-      this.$router.push({ path: `/questions/edit/${item.id}` });
+    showItem(item) {
+      this.$router.push({ path: `/chats/show/${item.id}` });
     },
     // ===== End:: End
-
-    // ===== Start:: Delete
-    selectDeleteItem(item) {
-      this.dialogDelete = true;
-      this.itemToDelete = item;
-    },
-
-    async confirmDeleteItem() {
-      try {
-        await this.$axios({
-          method: "DELETE",
-          url: `faqs/${this.itemToDelete.id}`,
-        });
-        this.dialogDelete = false;
-        this.setTableRows();
-        this.$message.success(this.$t("MESSAGES.deletedSuccessfully"));
-      } catch (error) {
-        this.dialogDelete = false;
-        this.$message.error(error.response.data.message);
-      }
-    },
-    // ===== End:: Delete
-    // ==================== End:: Crud ====================
   },
 
   created() {

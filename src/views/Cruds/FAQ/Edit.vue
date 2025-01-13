@@ -53,15 +53,20 @@
             required
           />
 
-          <!-- Start:: Status Input -->
-          <base-select-input
-            col="6"
-            :optionsList="activeStatuses"
-            :placeholder="$t('PLACEHOLDERS.status')"
-            v-model="data.is_active"
-            required
-          />
-          <!-- End:: Status Input -->
+          <!-- Start:: Deactivate Switch Input -->
+          <div class="input_wrapper switch_wrapper my-5 col-6">
+            <v-switch
+              color="green"
+              :label="
+                data.is_active?.value
+                  ? $t('PLACEHOLDERS.active')
+                  : $t('PLACEHOLDERS.notActive')
+              "
+              v-model="data.is_active.value"
+              hide-details
+            ></v-switch>
+          </div>
+          <!-- End:: Deactivate Switch Input -->
           <!-- Start:: Submit Button Wrapper -->
           <div class="btn_wrapper">
             <base-button
@@ -150,15 +155,15 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `questions/${this.$route.params.id}`,
+          url: `faqs/${this.$route.params.id}`,
         });
 
         // const data = res.data.data.GoldenOffer;
-        this.data.nameAr = res.data.data.Question.body_ar;
-        this.data.nameEn = res.data.data.Question.body_en;
-        this.data.answerAr = res.data.data.Question.answer_ar;
-        this.data.answerEn = res.data.data.Question.answer_en;
-        this.data.is_active = res.data.data.Question.is_active;
+        this.data.nameAr = res.data.data.Faq.question_ar;
+        this.data.nameEn = res.data.data.Faq.question_en;
+        this.data.answerAr = res.data.data.Faq.answer_ar;
+        this.data.answerEn = res.data.data.Faq.answer_en;
+        this.data.is_active = res.data.data.Faq.is_active;
         if (!this.data.is_active) {
           this.data.is_active = {
             id: 0,
@@ -198,18 +203,18 @@ export default {
     async submitForm() {
       const REQUEST_DATA = new FormData();
       // Start:: Append Request Data
-      REQUEST_DATA.append("body[ar]", this.data.nameAr);
-      REQUEST_DATA.append("body[en]", this.data.nameEn);
+      REQUEST_DATA.append("question[ar]", this.data.nameAr);
+      REQUEST_DATA.append("question[en]", this.data.nameEn);
       REQUEST_DATA.append("answer[ar]", this.data.answerAr);
       REQUEST_DATA.append("answer[en]", this.data.answerEn);
-      REQUEST_DATA.append("is_active", this.data.is_active?.value);
+      REQUEST_DATA.append("is_active", this.data.is_active?.value ? 1 : 0);
       REQUEST_DATA.append("_method", "PUT");
       // Start:: Append Request Data
 
       try {
         await this.$axios({
           method: "POST",
-          url: `questions/${this.$route.params.id}`,
+          url: `faqs/${this.$route.params.id}`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;

@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "RegionsHome",
+  name: "ProfessionsHome",
 };
 </script>

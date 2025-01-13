@@ -2,7 +2,7 @@
   <div class="crud_form_wrapper">
     <!-- Start:: Title -->
     <div class="form_title_wrapper">
-      <h4>{{ $t("SIDENAV.questions.add") }}</h4>
+      <h4>{{ $t("TITLES.addReligioussects") }}</h4>
     </div>
     <div class="col-12 text-end">
       <v-btn @click="$router.go(-1)" style="color: #3fa9f5">
@@ -19,42 +19,20 @@
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('SIDENAV.questions.bodyAr')"
-            v-model.trim="data.nameAr"
+            :placeholder="$t('PLACEHOLDERS.nameAr')"
+            v-model.trim="data.name"
             required
           />
-          <!-- End:: Name Input -->
-
-          <!-- Start:: Name Input -->
           <base-input
             col="6"
             type="text"
-            :placeholder="$t('SIDENAV.questions.bodyEn')"
+            :placeholder="$t('PLACEHOLDERS.nameEn')"
             v-model.trim="data.nameEn"
             required
           />
-
-          <!-- Start:: Name Input -->
-          <base-input
-            col="6"
-            type="textarea"
-            :placeholder="$t('SIDENAV.questions.answerAr')"
-            v-model.trim="data.answerAr"
-            required
-          />
           <!-- End:: Name Input -->
-
-          <!-- Start:: Name Input -->
-          <base-input
-            col="6"
-            type="textarea"
-            :placeholder="$t('SIDENAV.questions.answerEn')"
-            v-model.trim="data.answerEn"
-            required
-          />
-
           <!-- Start:: Deactivate Switch Input -->
-          <div class="input_wrapper switch_wrapper my-5 col-6">
+          <div class="input_wrapper switch_wrapper my-5 col-4">
             <v-switch
               color="green"
               :label="
@@ -67,6 +45,7 @@
             ></v-switch>
           </div>
           <!-- End:: Deactivate Switch Input -->
+
           <!-- Start:: Submit Button Wrapper -->
           <div class="btn_wrapper">
             <base-button
@@ -86,42 +65,48 @@
 </template>
 
 <script>
-export default {
-  name: "CreateAdditionalFields",
+import moment from "moment";
 
+export default {
+  name: "CreateReligioussects",
   data() {
     return {
       // Start:: Loader Control Data
       isWaitingRequest: false,
       // End:: Loader Control Data
 
+      file: null,
+      fileType: "",
+
       // Start:: Data Collection To Send
       data: {
-        nameAr: null,
+        name: null,
         nameEn: null,
-        answerEn: null,
-        answerAr: null,
-        is_active: null,
+        active: null,
+        active: true,
+        publish_start_date: null,
+        publish_end_date: null,
       },
       // End:: Data Collection To Send
-
+      cats: [],
+      subCats: [],
       arabicRegex: /^[\u0600-\u06FF\s]+$/,
       EnRegex: /[\u0600-\u06FF]/,
     };
   },
 
   computed: {
-    activeStatuses() {
+    mostPaids() {
       return [
         {
           id: 1,
-          name: this.$t("STATUS.active"),
-          value: 1,
+          name: this.$t("PLACEHOLDERS.yes"),
+          value: true,
         },
         {
           id: 2,
-          name: this.$t("STATUS.notActive"),
-          value: 0,
+          name: this.$t("PLACEHOLDERS.no"),
+          value: false,
         },
       ];
     },
@@ -138,34 +123,29 @@ export default {
     onPaste(event) {
       event.preventDefault();
     },
+
     validateInput() {
       // Remove non-Arabic characters from the input
-      this.data.nameAr = this.data.nameAr.replace(/[^\u0600-\u06FF\s]/g, "");
-      this.data.answerAr = this.data.answerAr.replace(
-        /[^\u0600-\u06FF\s]/g,
-        ""
-      );
+      this.data.name = this.data.name.replace(/[^\u0600-\u06FF\s]/g, "");
     },
     removeArabicCharacters() {
       this.data.nameEn = this.data.nameEn.replace(this.EnRegex, "");
-      this.data.answerEn = this.data.answerEn.replace(this.EnRegex, "");
     },
 
-    selectImage(selectedImage) {
-      this.data.image = selectedImage;
+    handleFileSelected({ file, fileType }) {
+      this.file = file; // Store the selected file in your data
+      this.fileType = fileType; // Store the selected file in your data
+    },
+    handleFileRemoved() {
+      this.file = null; // Reset the file when it's removed
+      this.fileType = "";
     },
 
     // Start:: validate Form Inputs
     validateFormInputs() {
       this.isWaitingRequest = true;
-      // if (!this.data.nameAr) {
-      //   this.isWaitingRequest = false;
-      //   this.$message.error(this.$t("VALIDATION.nameAr"));
-      //   return;
-      // } else {
-        this.submitForm();
-        return;
-      // }
+
+      this.submitForm();
     },
     // End:: validate Form Inputs
 
@@ -173,31 +153,24 @@ export default {
     async submitForm() {
       const REQUEST_DATA = new FormData();
       // Start:: Append Request Data
-      if (this.data.nameAr) {
-        REQUEST_DATA.append("question[ar]", this.data.nameAr);
+      if (this.data.name) {
+        REQUEST_DATA.append("name[ar]", this.data.name);
       }
       if (this.data.nameEn) {
-        REQUEST_DATA.append("question[en]", this.data.nameEn);
+        REQUEST_DATA.append("name[en]", this.data.nameEn);
       }
-      if (this.data.answerAr) {
-        REQUEST_DATA.append("answer[ar]", this.data.answerAr);
-      }
-      if (this.data.answerEn) {
-        REQUEST_DATA.append("answer[en]", this.data.answerEn);
-      }
-      REQUEST_DATA.append("is_active", this.data.is_active?.value);
-
+      REQUEST_DATA.append("is_active", this.data.active ? 1 : 0);
       // Start:: Append Request Data
 
       try {
         await this.$axios({
           method: "POST",
-          url: `faqs`,
+          url: `religious-sects`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;
         this.$message.success(this.$t("MESSAGES.addedSuccessfully"));
-        this.$router.push({ path: "/questions/all" });
+        this.$router.push({ path: "/religioussects/all" });
       } catch (error) {
         this.isWaitingRequest = false;
         this.$message.error(error.response.data.message);
@@ -205,38 +178,5 @@ export default {
     },
     // End:: Submit Form
   },
-
-  created() {
-    // Start:: Fire Methods
-    // this.showVehicleTypes();
-    // End:: Fire Methods
-  },
 };
 </script>
-
-<style lang="scss" scoped>
-.all_action {
-  display: flex;
-  gap: 15px;
-}
-
-.add_another {
-  border: none;
-  padding: 8px;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--light_gray_clr);
-  border-radius: 50%;
-  font-size: 18px;
-  color: var(--light_gray_clr);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  .fa-trash {
-    color: #ff2159;
-    cursor: pointer;
-  }
-}
-</style>

@@ -82,11 +82,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `settings?key=delete_account`,
+          url: `settings?key=delete-account`,
         });
         // Start:: Set Data
-        this.data.contentAr = res.data.data[0].value.ar;
-        this.data.contentEn = res.data.data[0].value.en;
+        this.data.contentAr = res.data.data.data[0].value.ar;
+        this.data.contentEn = res.data.data.data[0].value.en;
         // End:: Set Data
       } catch (error) {
         console.log(error.response.data.message);
@@ -117,7 +117,7 @@ export default {
     async submitForm() {
       const REQUEST_DATA = new FormData();
       // Start:: Append Request Data
-      REQUEST_DATA.append("key", "delete_account");
+      REQUEST_DATA.append("key", "delete-account");
 
       REQUEST_DATA.append(
         "value[ar]",
@@ -132,7 +132,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `settings`,
+          url: `/settings?key=delete-account`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;

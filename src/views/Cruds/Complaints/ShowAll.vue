@@ -152,19 +152,6 @@
         </template>
         <!-- Start:: Phone -->
 
-        <template v-slot:[`item.content`]="{ item }">
-          <template>
-            <h6 class="text-danger" v-if="item.content?.length === 0">
-              {{ $t("TABLES.noData") }}
-            </h6>
-            <div class="actions" v-else>
-              <button class="btn_show" @click="showReplayModal(item.content)">
-                <i class="fal fa-file-alt"></i>
-              </button>
-            </div>
-          </template>
-        </template>
-
         <!-- Start:: Message Reply -->
         <template v-slot:[`item.reply`]="{ item }">
           <template>
@@ -407,13 +394,6 @@ export default {
           value: "submission_date",
           align: "center",
           width: "120",
-          sortable: false,
-        },
-        {
-          text: this.$t("TABLES.ContactMessages.content"),
-          value: "content",
-          align: "center",
-          width: "80",
           sortable: false,
         },
         {

@@ -2,7 +2,7 @@
   <div class="crud_form_wrapper">
     <!-- Start:: Title -->
     <div class="form_title_wrapper">
-      <h4>{{ $t("SIDENAV.AppContent.aboutUs") }}</h4>
+      <h4>{{ $t("TITLES.aboutUs") }}</h4>
     </div>
     <div class="col-12 text-end">
       <v-btn @click="$router.go(-1)" style="color: #3fa9f5">
@@ -78,11 +78,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `settings?key=about_us`,
+          url: `settings?key=about-app`,
         });
         // Start:: Set Data
-        this.data.contentAr = res.data.data[0].value.ar;
-        this.data.contentEn = res.data.data[0].value.en;
+        this.data.contentAr = res.data.data.data[0].value.ar;
+        this.data.contentEn = res.data.data.data[0].value.en;
         // End:: Set Data
       } catch (error) {
         console.log(error.response.data.message);
@@ -113,7 +113,7 @@ export default {
     async submitForm() {
       const REQUEST_DATA = new FormData();
       // Start:: Append Request Data
-      REQUEST_DATA.append("key", "about_us");
+      REQUEST_DATA.append("key", "about-app");
       REQUEST_DATA.append("value[ar]", this.data.contentAr);
       REQUEST_DATA.append("value[en]", this.data.contentEn);
       // REQUEST_DATA.append("_method", "PUT");

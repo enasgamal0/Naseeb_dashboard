@@ -78,11 +78,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `settings?key=terms_and_conditions`,
+          url: `settings?key=terms-and-conditions`,
         });
         // Start:: Set Data
-        this.data.contentAr = res.data.data[0].value.ar;
-        this.data.contentEn = res.data.data[0].value.en;
+        this.data.contentAr = res.data.data.data[0].value.ar;
+        this.data.contentEn = res.data.data.data[0].value.en;
 
         // End:: Set Data
       } catch (error) {
@@ -114,7 +114,7 @@ export default {
     async submitForm() {
       const REQUEST_DATA = new FormData();
       // Start:: Append Request Data
-      REQUEST_DATA.append("key", "terms_and_conditions");
+      REQUEST_DATA.append("key", "terms-and-conditions");
 
       REQUEST_DATA.append("value[ar]", this.data.contentAr);
       REQUEST_DATA.append("value[en]", this.data.contentEn);
@@ -123,7 +123,7 @@ export default {
       try {
         await this.$axios({
           method: "POST",
-          url: `settings`,
+          url: `settings?key=terms-and-conditions`,
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;
