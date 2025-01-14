@@ -39,9 +39,12 @@
             <span class="message-timestamp">{{ message.created_at }}</span>
             <button
               @click="selectBlockedUser(message.from_id)"
-              style="font-size: 20px"
+              style="font-size: 20px; opacity: 30%;"
+              :style="!message.is_blocked ? 'opacity: 30%' : 'opacity: 100%'"
               class="text-danger mx-2"
-            >
+              :disabled="!message.is_blocked"
+              :title="!message.is_blocked ? $t('BUTTONS.already_blocked') : ''"
+              >
               <i class="fa fa-ban"></i>
             </button>
           </div>
@@ -133,11 +136,8 @@ export default {
           url: `clients/status/${this.userToBlock}`,
         });
         this.dialogBlock = false;
-        this.tableRows = this.tableRows.filter((item) => {
-          return item.id != this.userToBlock;
-        });
-        this.setTableRows();
-        this.$message.success(this.$t("MESSAGES.changedSuccessfully"));
+        this.getDataToShow();
+        this.$message.success(this.$t("MESSAGES.blockedSuccessfully"));
       } catch (error) {
         this.dialogBlock = false;
         this.$message.error(error.response.data.message);

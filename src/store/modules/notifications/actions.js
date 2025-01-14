@@ -8,7 +8,7 @@ export default {
     // START:: SEND GET REQUEST
     axios({
       method: "GET",
-      url: `notification/index`,
+      url: `notification/admin-notifications`,
     })
       .then((res) => {
         context.commit("setNotifications", {
@@ -47,7 +47,7 @@ export default {
     // START:: SEND GET REQUEST
     axios({
       method: "GET",
-      url: `notification/count-notification`,
+      url: `notification/notifications-count`,
     })
       .then((res) => {
         // context.commit("setAllReadiedNotifications", {
@@ -57,8 +57,8 @@ export default {
         //   ).length,
         // });
         context.commit("setAllReadiedNotifications", {
-          notifications: res.data.count,
-          unreadNotificationsCount: res.data.count
+          notifications: res.data.data.count,
+          unreadNotificationsCount: res.data.data.count
         });
       })
       .catch((error) => {

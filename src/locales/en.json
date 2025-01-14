@@ -656,6 +656,7 @@
       "contentEn": "Text in English",
       "notification": "Notification",
       "receiverType": "Receiver Type",
+      "receivers": "Receivers",
       "date": "Date",
       "time": "Time",
       "content": "Content"
@@ -916,6 +917,7 @@
   },
 
   "STATUS": {
+    "advertisement": "Advertisement",
     "checked_out": "Checked Out",
     "clean-unit": "Cleanliness of the unit",
     "qualaty-unit": "Quality of the unit",
@@ -1144,6 +1146,7 @@
   },
 
   "BUTTONS": {
+    "already_blocked": "Already Blocked",
     "copy_prev": "Add as Previous",
     "post": "Post",
     "send_reply": "Send Reply",
@@ -1817,11 +1820,15 @@
     "Add_new_vehicle": "Add New Vehicle",
     "edit_vehicle": "Edit Vehicle Data",
 
-    "new_requests_count": "Total number of app members.",
-    "incomplete_requests_count": "Total number of ads.",
-    "completed_requests_count": "Total number of accepted ads.",
-    "canceled_requests_count": "Total number of disapproved ads.",
-    "ongoing_requests_count": "Number of packages available.",
+    "new_requests_count": "Total number of app members",
+    "incomplete_requests_count": "Total number of ads",
+    "admins_count": "Total number of Admins",
+    "subscriptions_count": "Total number of Subscriptions",
+    "total_contacts": "The number of unanswered 'Contact Us' messages",
+    "total_revenue": "Total Revenue",
+    "completed_requests_count": "Total number of accepted ads",
+    "canceled_requests_count": "Total number of disapproved ads",
+    "ongoing_requests_count": "Number of packages available",
     "rejected_requests_count": "Total package subscription price",
     "total_requests": "Total number Of orders",
     "number_of_accepted_orders": "Number Of Accepted Orders",
@@ -2226,7 +2233,8 @@
     "deleteItem": "Are You Sure To Delete This Item?",
     "changeItem": "Are You Sure To change status This Item?",
     "deletedSuccessfully": "Deleted Successfully",
-    "changedSuccessfully": "Status Changed Successfully",
+    "changedSuccessfully": "Status has been Changed Successfully",
+    "blockedSuccessfully": "User has been blocked successfully",
     "changeActivation": "Activation Status Changed Successfully",
     "changeAvailable": "Availability status changed successfully",
     "changeVerification": "Verification Status Changed Successfully",

@@ -240,10 +240,10 @@ export default {
             data: REQUEST_DATA,
           });
           this.isWaitingRequest = false;
-          localStorage.setItem(
-            "naseeb_admin_dashboard_reset_pass_token",
-            res.data.access_token
-          );
+          // localStorage.setItem(
+          //   "naseeb_admin_dashboard_reset_pass_token",
+          //   res.data.access_token
+          // );
           this.$message.success(this.$t("MESSAGES.verifiedSuccessfully"));
           this.clearFormInputs();
           localStorage.removeItem("naseeb_admin_dashboard_email");

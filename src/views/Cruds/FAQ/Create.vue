@@ -185,7 +185,7 @@ export default {
       if (this.data.answerEn) {
         REQUEST_DATA.append("answer[en]", this.data.answerEn);
       }
-      REQUEST_DATA.append("is_active", this.data.is_active?.value);
+      REQUEST_DATA.append("is_active", this.data.active ? 1 : 0);
 
       // Start:: Append Request Data
 

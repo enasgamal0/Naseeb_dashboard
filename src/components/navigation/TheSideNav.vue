@@ -209,7 +209,7 @@
         <router-link to="/financialreports/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/budgeting.png"
+              src="@/assets/media/icons/ui_icons/report.png"
               alt="icon"
               width="40"
               height="40"
@@ -230,7 +230,7 @@
         <router-link to="/reasons/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/authourization.svg"
+              src="@/assets/media/icons/ui_icons/block.png"
               alt="icon"
               width="40"
               height="40"
@@ -339,7 +339,7 @@
         <router-link to="/Complaints/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/subtrain.png"
+              src="@/assets/media/icons/ui_icons/office.svg"
               alt="icon"
               width="40"
               height="40"
@@ -383,7 +383,7 @@
         <router-link to="/questions/all">
           <span class="route_icon">
             <img
-              src="@/assets/media/icons/ui_icons/question.png"
+              src="@/assets/media/icons/ui_icons/service_type.svg"
               alt="icon"
               width="40"
               height="40"

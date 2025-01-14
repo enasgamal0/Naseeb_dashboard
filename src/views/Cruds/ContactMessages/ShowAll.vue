@@ -259,7 +259,7 @@
                 <v-btn
                   class="modal_confirm_btn"
                   @click="sendReplay"
-                  :disabled="!!!messageReplay"
+                  :disabled="!!!messageReplay || messageReplay?.length<3"
                 >
                   {{ $t("BUTTONS.replay") }}
                 </v-btn>
@@ -319,8 +319,8 @@ export default {
       return [
         {
           id: 1,
-          name: this.$t("STATUS.request"),
-          value: "request",
+          name: this.$t("STATUS.advertisement"),
+          value: "advertisement",
         },
         {
           id: 2,
@@ -342,11 +342,6 @@ export default {
           name: this.$t("STATUS.other"),
           value: "another",
         },
-        {
-          id: 6,
-          name: this.$t("STATUS.all"),
-          value: null,
-        },
       ];
     },
 
@@ -355,12 +350,12 @@ export default {
         {
           id: 1,
           name: this.$t("STATUS.replied"),
-          value: "response",
+          value: "answered",
         },
         {
           id: 2,
           name: this.$t("STATUS.notReplied"),
-          value: "No_response",
+          value: "unanswered",
         },
       ];
     },
@@ -416,6 +411,13 @@ export default {
           width: "150",
         },
         {
+          text: this.$t("TABLES.ContactMessages.type"),
+          value: "_type",
+          align: "center",
+          width: "80",
+          sortable: false,
+        },
+        {
           text: this.$t("TABLES.ContactMessages.date"),
           value: "created_at",
           align: "center",
@@ -434,13 +436,6 @@ export default {
           value: "reply",
           align: "center",
           width: "100",
-          sortable: false,
-        },
-        {
-          text: this.$t("TABLES.ContactMessages.type"),
-          value: "type_message",
-          align: "center",
-          width: "80",
           sortable: false,
         },
         {
@@ -539,7 +534,7 @@ export default {
             name: this.filterOptions.name,
             mobile: this.filterOptions.phone,
             email: this.filterOptions.email,
-            type_message: this.filterOptions.messageType?.value,
+            type: this.filterOptions.messageType?.value,
             status: this.filterOptions.status?.value,
           },
         });
@@ -581,7 +576,7 @@ export default {
       // REQUEST_DATA.append("_method", 'PUT');
       const REQUEST_DATA = {
         reply: this.messageReplay,
-        _method: "put"
+        // _method: "put"
       };
 
       try {

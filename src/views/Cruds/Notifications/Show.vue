@@ -21,28 +21,37 @@
             type="text"
             :placeholder="$t('PLACEHOLDERS.address')"
             v-model.trim="data.title"
-            readonly
+            disabled
           />
           <base-input
             col="12"
             type="text"
             :placeholder="$t('PLACEHOLDERS.contents')"
             v-model.trim="data.body"
-            readonly
+            disabled
           />
-          <base-input
+          <!-- <base-input
             col="12"
             type="text"
             :placeholder="$t('PLACEHOLDERS.receiverType')"
             v-model.trim="data.reciever"
-            readonly
+            disabled
+          /> -->
+          <base-select-input
+            v-if="data.reciever"
+            col="12"
+            :optionsList="data.reciever"
+            multiple
+            :placeholder="$t('PLACEHOLDERS.receivers')"
+            v-model.trim="data.reciever"
+            disabled
           />
           <base-input
             col="12"
             type="text"
             :placeholder="$t('TABLES.Notifications.date')"
             v-model.trim="data.created_at"
-            readonly
+            disabled
           />
 
           <!-- End:: Submit Button Wrapper -->
@@ -128,15 +137,16 @@ export default {
     async getNotificationData() {
       try {
         let res = await this.$axios({
-          method: "GET",
-          url: `notification/show?notification_id=${this.$route.params.id}`,
-          // data: { notification_id: `${this.$route.params.id}` },
+          method: "POST",
+          url: `notification/show`,
+          data: { notification_id: `${this.$route.params.id}` },
         });
+        console.log(res.data.data)
         this.data.created_at = res.data.data.notification.created_at;
         // this.data.sender_type = res.data.Notification.data.notifiable_type_translated;
         this.data.title = res.data.data.notification.title;
         this.data.body = res.data.data.notification.body;
-        this.data.reciever = res.data.data.notification?.reciever;
+        this.data.reciever = res.data.data?.notifiable;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);

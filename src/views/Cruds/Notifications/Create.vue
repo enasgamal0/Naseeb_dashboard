@@ -72,7 +72,10 @@
                   data.role && data.role.value == 'clients' && clients.length
                 "
                 class="col-12"
-                :optionsList="clients"
+                :optionsList="clients.map(client => ({
+                  id: client.user.id,
+                  name: client.user.name
+                }))"
                 :placeholder="$t('TITLES.clients')"
                 v-model="data.clients"
                 required
@@ -189,10 +192,14 @@ export default {
       REQUEST_DATA.append("title[en]", this.data.titleEn);
       REQUEST_DATA.append("body[ar]", this.data.contentAr);
       REQUEST_DATA.append("body[en]", this.data.contentEn);
-      REQUEST_DATA.append("role", this.data.role.value);
-      this.data.clients?.map((ele, index) => {
-        REQUEST_DATA.append(`users[${index}]`, ele.id);
-      });
+      if (this.data.clients){
+        this.data.clients?.map((ele) => {
+          REQUEST_DATA.append(`users[]`, ele.id);
+        });
+      }
+      else{
+        REQUEST_DATA.append("to_type", "all");
+      }
       // Start:: Append Request Data
 
       try {
@@ -216,10 +223,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: "users?type=employee&statusRequests=accepted&page=0",
+          url: "clients?page=0&limit=0",
         });
         this.loading = false;
-        this.clients = res.data.data;
+        this.clients = res.data.data.data;
+        console.log(this.clients)
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);

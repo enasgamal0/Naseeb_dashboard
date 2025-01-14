@@ -70,22 +70,15 @@
         </div>
 
         <div class="title_route_wrapper">
-          <div class="excel" @click="downloadExcel">
+          <a href="https://backend.nasib.moltaqadev.com/dashboard-api/v1/financials/export-excel" target="_blank" class="excel">
             {{ $t("BUTTONS.downloadExcel") }}
-          </div>
+          </a>
 
-          <base-button
+          <a href="https://backend.nasib.moltaqadev.com/dashboard-api/v1/financials/export-pdf" target="_blank"
             class="mt-0 pdf_btn"
-            styleType="solid_btn"
-            :btnText="$t('BUTTONS.downloadPdf')"
-            @fireClick="downloadPdf"
-            :disabled="pdfDownloadBtnIsLoading"
-          >
-            <template v-slot:btn_icon>
+          > {{ $t('BUTTONS.downloadPdf') }}
               <i class="fal fa-file-pdf"></i>
-            </template>
-          </base-button>
-          <!-- <a href="https://backend.nasib.moltaqadev.com/dashboard-api/v1/financials/export-excel">aa</a> -->
+          </a>
         </div>
       </div>
       <!--  =========== End:: Table Title =========== -->
@@ -388,39 +381,6 @@ export default {
     },
     // End:: Set Table Rows
 
-    // Start:: Handling Download Files
-    // async downloadPdf() {
-    //   await this.$refs.html2Pdf.generatePdf();
-    //   this.pdfDownloadBtnIsLoading = false;
-    // },
-
-    downloadPdf() {
-      try {
-        this.$axios({
-          method: "GET",
-          url: `financials/export-pdf`,
-        });
-      } catch (error) { 
-        console.log(error.response.data.message);
-      }
-    },
-
-    // async downloadExcel() {
-    //   window.open(this.excel_report, "_blank");
-    // },
-
-    downloadExcel() {
-      try {
-        this.$axios({
-          method: "GET",
-          url: `financials/export-excel`,
-        });
-      } catch (error) { 
-        console.log(error.response.data.message);
-      }
-    },
-    // End:: Handling Download Files
-
     // ==================== Start:: Crud ====================
     // ===== Start:: Show
     showItem(item) {
@@ -477,7 +437,8 @@ export default {
   background: darkgreen;
   padding: 7px 10px;
   border-radius: 12px;
-  color: #fff;
+  color: #fff !important;
+  border-color: white !important;
   cursor: pointer;
 }
 </style>

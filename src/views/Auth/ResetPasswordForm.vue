@@ -123,7 +123,8 @@ export default {
       );
       // End:: Append Request Data
       const token = localStorage.getItem(
-        "naseeb_admin_dashboard_reset_pass_token"
+        // "naseeb_admin_dashboard_reset_pass_token"
+        "naseeb_admin_dashboard_forget_pass_token"
       );
       try {
         await this.$axios({
@@ -137,7 +138,7 @@ export default {
         this.isWaitingRequest = false;
         this.$message.success(this.$t("MESSAGES.editedSuccessfully"));
         localStorage.removeItem("naseeb_admin_dashboard_forget_pass_token");
-        localStorage.removeItem("naseeb_admin_dashboard_reset_pass_token");
+        // localStorage.removeItem("naseeb_admin_dashboard_reset_pass_token");
         this.clearFormInputs();
         this.$router.replace("/");
       } catch (error) {

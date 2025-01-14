@@ -21,54 +21,44 @@
           >
             <div class="box">
               <div class="icon">
-                <i v-if="key === 'countUsers'" class="fas fa-users"></i>
+                <i v-if="key === 'admins'" class="fas fa-user-tie"></i>
 
                 <i
-                  v-else-if="key === 'countUsersHasOrders'"
-                  class="fas fa-user-tie"
+                  v-else-if="key === 'app_users'"
+                  class="fas fa-users"
                 ></i>
 
                 <i
-                  v-else-if="key === 'countCleaner'"
-                  class="fas fa-hands-wash"
+                  v-else-if="key === 'contacts_count'"
+                  class="fas fa-comment-alt"
                 ></i>
 
-                <i v-else-if="key === 'countOrder'" class="fas fa-box"></i>
+                <i v-else-if="key === 'subscriptions_count'" class="fas fa-user-plus"></i>
 
                 <i
-                  v-else-if="key === 'countOrderPending'"
-                  class="fas fa-spinner"
-                ></i>
-
-                <i
-                  v-else-if="key === 'countOrderCancel'"
-                  class="fas fa-window-close"
+                  v-else-if="key === 'revenue'"
+                  class="fas fa-dollar-sign"
                 ></i>
               </div>
 
               <div class="info_box">
-                <span v-if="key == 'countUsers'">{{
+                <span v-if="key == 'admins'">{{
+                  $t("PLACEHOLDERS.admins_count")
+                }}</span>
+                <span v-if="key == 'app_users'">{{
                   $t("PLACEHOLDERS.total_app_users")
                 }}</span>
 
-                <span v-else-if="key === 'countUsersHasOrders'">{{
-                  $t("PLACEHOLDERS.users_with_requests")
+                <span v-else-if="key === 'subscriptions_count'">{{
+                  $t("PLACEHOLDERS.subscriptions_count")
                 }}</span>
 
-                <span v-else-if="key === 'countCleaner'">{{
-                  $t("PLACEHOLDERS.count_cleaner")
+                <span v-else-if="key === 'contacts_count'">{{
+                  $t("PLACEHOLDERS.total_contacts")
                 }}</span>
 
-                <span v-else-if="key === 'countOrder'">{{
-                  $t("PLACEHOLDERS.total_requests")
-                }}</span>
-
-                <span v-else-if="key === 'countOrderPending'">{{
-                  $t("PLACEHOLDERS.pending_requests")
-                }}</span>
-
-                <span v-else-if="key === 'countOrderCancel'">{{
-                  $t("PLACEHOLDERS.canceled_requests")
+                <span v-else-if="key === 'revenue'">{{
+                  $t("PLACEHOLDERS.total_revenue")
                 }}</span>
 
                 <p class="number_box">{{ value }}</p>
@@ -104,11 +94,11 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: "Statistics",
+          url: "statistic",
         });
 
         // console.log("All Data ==>", res.data.data);
-        this.statics = res.data;
+        this.statics = res.data.data;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);
@@ -133,6 +123,7 @@ export default {
       border-radius: 5px;
       overflow: hidden;
       display: flex;
+      flex-direction: row-reverse;
       justify-content: space-between;
 
       //cursor: pointer;
@@ -175,7 +166,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
+        align-items: flex-start;
 
         span {
           font-size: 19px;

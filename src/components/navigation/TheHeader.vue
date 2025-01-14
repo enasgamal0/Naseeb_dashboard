@@ -18,7 +18,6 @@
             class="group"
             :class="notificationsData.unreadNotifications > 0 ? '' : 'none'"
           >
-          
             <!-- ********** Start:: Notification Button ********** -->
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">

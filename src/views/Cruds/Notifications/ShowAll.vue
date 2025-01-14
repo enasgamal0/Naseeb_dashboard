@@ -267,7 +267,7 @@ export default {
           sortable: false,
         },
         {
-          text: this.$t("TABLES.Notifications.notification"),
+          text: this.$t("PLACEHOLDERS.contents"),
           value: "data.body",
           align: "center",
           sortable: false,
@@ -380,7 +380,7 @@ export default {
         let res = await this.$axios({
           method: "GET",
           // url: "notification/admin-notifications",
-          url: "notification/index?sender=admin",
+          url: "notification/sent_notifications",
           params: {
             page: this.paginations.current_page,
             title: this.filterOptions.name,
@@ -395,9 +395,7 @@ export default {
             index +
             1;
         });
-        console.log(res.data.data.data)
         this.tableRows = res.data.data;
-        console.log("this.tableRows", this.tableRows)
         this.paginations.last_page = res.data.meta.last_page;
         this.paginations.items_per_page = res.data.meta.per_page;
       } catch (error) {

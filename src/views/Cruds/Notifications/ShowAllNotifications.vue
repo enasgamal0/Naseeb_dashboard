@@ -2,11 +2,11 @@
   <div class="show_all_content_wrapper">
     <!-- Start:: Single Step Form Content -->
     <div class="single_step_form_content_wrapper">
-      <form>
+      <form>{{ paginations }}
         <transition-group name="fade" v-if="receivedMessages.length">
           <div
             class="notification"
-            :class="{ read: message.read_at == true }"
+            :class="{ read: message.is_read == true }"
             v-for="(message, index) in receivedMessages"
             :key="'k' + index"
           >
@@ -36,8 +36,8 @@
               <!-- </router-link> -->
               <div
                 class="delete_notification"
-                :class="{ read: message.read_at }"
-                @click="NotificationsReaded(message.id)"
+                :class="{ read: message.is_read }"
+                @click="NotificationsReaded(message.id, message.is_read )"
               >
                 <i class="fas fa-check-double"></i>
               </div>
@@ -51,8 +51,8 @@
             </router-link>
             <div
                 class="delete_notification"
-                :class="{ read: message.read_at }"
-                @click="NotificationsReaded(message.id)"
+                :class="{ read: message.is_read }"
+                @click="NotificationsReaded(message.id, message.is_read)"
               >
                 <i class="fas fa-check-double"></i>
               </div>
@@ -151,13 +151,12 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: "/notification/user-notifications",
+          url: "/notification/admin-notifications",
           params: {
             page: this.paginations.current_page,
           },
         });
 
-        console.log("notification", res.data.data);
         this.receivedMessages = res.data.data;
         this.paginations.last_page = res.data.meta.last_page;
         this.paginations.items_per_page = res.data.meta.per_page;
@@ -184,24 +183,24 @@ export default {
     //   }
     // },
 
-    async NotificationsReaded(item_id) {
-      try {
-        let res = await this.$axios.post("notification/mark-as-read", {
-          notification_id: item_id,
-        });
-        this.$message.success(res.data.message);
-
-        // Update the local state for the specific message
-        const message = this.receivedMessages.find((msg) => msg.id === item_id);
-        if (message) {
-          message.read_at = true;
+    async NotificationsReaded(item_id, is_read) {
+      if (!is_read){
+        try {
+          let res = await this.$axios.post("notification/mark-as-read", {
+            notification_id: item_id,
+          });
+            this.$message.success(res.data.message);
+          // Update the local state for the specific message
+          const message = this.receivedMessages.find((msg) => msg.id === item_id);
+          if (message) {
+            message.is_read = true;
+          }
+          this.getData();
+          this.readAllNotifications();
+          this.notificationsData.unreadNotifications--;
+        } catch (error) {
+          this.$message.error(error.response.data.errors);
         }
-
-        this.getData();
-        this.readAllNotifications();
-        this.notificationsData.unreadNotifications--;
-      } catch (error) {
-        this.$message.error(error.response.data.errors);
       }
     },
     updateRouterQueryParam(pagenationValue) {
@@ -266,7 +265,9 @@ export default {
   text-align: center;
   margin-bottom: 20px;
   position: relative;
-
+  a{
+    cursor: default;
+  }
   .delete_notification {
     position: absolute;
     z-index: 500 !important;
@@ -277,6 +278,7 @@ export default {
     &.read {
       i {
         color: #49a956;
+        cursor: default;
       }
     }
 
