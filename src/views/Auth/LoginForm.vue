@@ -140,11 +140,11 @@ export default {
         });
         this.isWaitingRequest = false;
         localStorage.setItem(
-          "naseeb_admin_roles",
+          "nasib_admin_roles",
           JSON.stringify(res.data.data.user)
         );
 
-        console.log(JSON.parse(localStorage.getItem("naseeb_admin_roles")));
+        console.log(JSON.parse(localStorage.getItem("nasib_admin_roles")));
         // Start:: Set Authed User Data
         this.setAuthenticatedUserData({
           id: res.data.data.user.id,

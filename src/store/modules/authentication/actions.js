@@ -15,10 +15,10 @@ export default {
         method: "POST",
         url: `auth/logout`,
       });
-      localStorage.removeItem("naseeb_admin_dashboard_user_id");
-      localStorage.removeItem("naseeb_admin_dashboard_user_token");
-      localStorage.removeItem("naseeb_admin_dashboard_userName");
-      localStorage.removeItem("naseeb_admin_roles");
+      localStorage.removeItem("nasib_admin_dashboard_user_id");
+      localStorage.removeItem("nasib_admin_dashboard_user_token");
+      localStorage.removeItem("nasib_admin_dashboard_userName");
+      localStorage.removeItem("nasib_admin_roles");
       router.replace("/");
       location.reload();
     } catch (error) {

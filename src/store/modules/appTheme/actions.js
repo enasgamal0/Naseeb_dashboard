@@ -1,7 +1,7 @@
 export default {
   // START:: SET APP THEME
   setAppTheme(context, payload) {
-    localStorage.setItem("naseeb_admin_dashboard_theme", payload);
+    localStorage.setItem("nasib_admin_dashboard_theme", payload);
     context.commit("setAppTheme", payload);
   },
   // END:: SET APP THEME

@@ -1591,7 +1591,7 @@ function nextFactory(context, middleware, index) {
 // Authentication and Permission Check Middleware
 router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem(
-    "naseeb_admin_dashboard_user_token"
+    "nasib_admin_dashboard_user_token"
   );
 
   if (to.meta.middleware) {
@@ -1618,7 +1618,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresPermission) {
     const { action, subject } = to.meta.requiresPermission;
     const storedPermissions = JSON.parse(
-      localStorage.getItem("naseeb_admin_roles")
+      localStorage.getItem("nasib_admin_roles")
     )?.permissions;
 
     if (

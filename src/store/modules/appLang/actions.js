@@ -5,7 +5,7 @@ import i18n from "../../../plugins/i18n";
 export default {
   // START:: SET APP LOCALE
   setAppLocale(context, payload) {
-    localStorage.setItem("naseeb_admin_dashboard_language", payload);
+    localStorage.setItem("nasib_admin_dashboard_language", payload);
     context.commit("setAppLocale", payload);
   },
   // END:: SET APP LOCALE

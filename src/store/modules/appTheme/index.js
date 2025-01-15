@@ -7,8 +7,8 @@ export default {
 
   state: {
     // START:: THEME DATA
-    naseeb_admin_dashboard_theme: localStorage.getItem(
-      "naseeb_admin_dashboard_theme"
+    nasib_admin_dashboard_theme: localStorage.getItem(
+      "nasib_admin_dashboard_theme"
     ),
     // END:: THEME DATA
   },

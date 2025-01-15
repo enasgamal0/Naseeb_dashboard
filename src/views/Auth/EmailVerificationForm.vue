@@ -170,7 +170,7 @@ export default {
       REQUEST_DATA.append("email", this.getAuthenticatedUserData.email);
       // End:: Append Request Data
       const token = localStorage.getItem(
-        "naseeb_admin_dashboard_forget_pass_token"
+        "nasib_admin_dashboard_forget_pass_token"
       );
       try {
         let res = await this.$axios({
@@ -185,7 +185,7 @@ export default {
         this.countDown();
         this.$message.success(this.$t("MESSAGES.sentSuccessfully"));
         localStorage.setItem(
-          "naseeb_admin_dashboard_verification_code",
+          "nasib_admin_dashboard_verification_code",
           res.data.body.code
         );
         this.clearFormInputs();
@@ -222,7 +222,7 @@ export default {
       // Start:: Append Request Data
       this.$axios.defaults.headers.common["Authorization"] =
         "Bearer " +
-        localStorage.getItem("naseeb_admin_dashboard_forget_pass_token");
+        localStorage.getItem("nasib_admin_dashboard_forget_pass_token");
       REQUEST_DATA.append(
         "code",
         this.firstNumber +
@@ -241,12 +241,12 @@ export default {
           });
           this.isWaitingRequest = false;
           // localStorage.setItem(
-          //   "naseeb_admin_dashboard_reset_pass_token",
+          //   "nasib_admin_dashboard_reset_pass_token",
           //   res.data.access_token
           // );
           this.$message.success(this.$t("MESSAGES.verifiedSuccessfully"));
           this.clearFormInputs();
-          localStorage.removeItem("naseeb_admin_dashboard_email");
+          localStorage.removeItem("nasib_admin_dashboard_email");
           this.$router.replace("/reset-password");
         } catch (error) {
           this.isWaitingRequest = false;

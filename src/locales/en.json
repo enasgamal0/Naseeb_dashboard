@@ -82,7 +82,7 @@
       "defination_price": "Flexible price definition text",
       "page_host": "Warranty Page",
       "Instructions": "Instructions",
-      "adv_naseeb": "naseeb features",
+      "adv_nasib": "nasib features",
       "How_estimated": "How are your expected profits estimated",
       "How_hostng": "How to host?",
       "software_host": "host security software",
@@ -124,9 +124,9 @@
       "content_ar": "Content in Arabic",
       "content_en": "Content in English",
       "image": "Image",
-      "add": "Add naseeb Feature",
-      "edit": "Edit naseeb Feature",
-      "show": "Show naseeb Feature",
+      "add": "Add nasib Feature",
+      "edit": "Edit nasib Feature",
+      "show": "Show nasib Feature",
       "host_add": "Add New Content",
       "host_show": "Show Hosting",
       "host_edit": "Edit Content"
@@ -515,7 +515,7 @@
       "time_progress": "Operation Time",
       "admin_name": "Admin Name Executing the Operation"
     },
-    "naseeb": {
+    "nasib": {
       "title": "Unit Name",
       "main_category": "Main Category",
       "status_unit": "Unit Status",

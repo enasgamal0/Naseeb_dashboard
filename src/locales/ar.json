@@ -92,7 +92,7 @@
       "defination_price": "نص تعريف السعر المرن",
       "page_host": "صفحة الضمان",
       "Instructions": "الإرشادات ",
-      "adv_naseeb": " مميزات تطبيق نصيب",
+      "adv_nasib": " مميزات تطبيق نصيب",
       "How_estimated": "كيف يتم تقدير أرباحك المتوقعة؟",
       "How_hostng": "كيف تستضيف؟",
       "software_host": "برنامج حماية المضيف",
@@ -134,9 +134,9 @@
       "content_ar": "المحتوى بالعربية",
       "content_en": "المحتوى بالإنجليزية",
       "image": "الصورة",
-      "add": "إضافة ميزه naseeb",
-      "edit": "تعديل ميزه naseeb",
-      "show": "عرض ميزه naseeb",
+      "add": "إضافة ميزه nasib",
+      "edit": "تعديل ميزه nasib",
+      "show": "عرض ميزه nasib",
       "host_add": "إضافة محتوى جديد",
       "host_show": "عرض استضافة",
       "host_edit": "تعديل محتوى"
@@ -531,7 +531,7 @@
       "admin_name": "اسم الأدمن منفذ العملية",
       "points": "النقاط"
     },
-    "naseeb": {
+    "nasib": {
       "title": "اسم الوحدة",
       "main_category": "القسم الرئيسي",
       "status_unit": "حالة الوحدة",

@@ -107,11 +107,11 @@ export default {
         this.isWaitingRequest = false;
         this.$message.success(this.$t("MESSAGES.sentSuccessfully"));
         localStorage.setItem(
-          "naseeb_admin_dashboard_verification_code",
+          "nasib_admin_dashboard_verification_code",
           res.data.data.code
         );
         localStorage.setItem(
-          "naseeb_admin_dashboard_forget_pass_token",
+          "nasib_admin_dashboard_forget_pass_token",
           res.data.data.access_token
         );
         this.setAuthenticatedUserData({

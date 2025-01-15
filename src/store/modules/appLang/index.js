@@ -6,8 +6,8 @@ export default {
   namespaced: true,
   state: {
     // START:: LANGUAGE DATA
-    naseeb_admin_dashboard_language: localStorage.getItem(
-      "naseeb_admin_dashboard_language"
+    nasib_admin_dashboard_language: localStorage.getItem(
+      "nasib_admin_dashboard_language"
     ),
     // END:: LANGUAGE DATA
   },

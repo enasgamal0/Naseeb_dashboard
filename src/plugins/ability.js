@@ -1,9 +1,9 @@
 import { AbilityBuilder } from "@casl/ability";
 
 export default AbilityBuilder.define((can) => {
-  if (localStorage.getItem("naseeb_admin_roles")) {
+  if (localStorage.getItem("nasib_admin_roles")) {
     const permissions = JSON.parse(
-      localStorage.getItem("naseeb_admin_roles")
+      localStorage.getItem("nasib_admin_roles")
     ).permissions;
 
     permissions.forEach((permission) => {

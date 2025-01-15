@@ -33,9 +33,9 @@ axios.interceptors.request.use(
       router.replace("/forbidden");
     }
     if (error.response.status === 401) {
-      localStorage.removeItem("naseeb_admin_dashboard_user_id");
-      localStorage.removeItem("naseeb_admin_dashboard_user_token");
-      localStorage.removeItem("naseeb_admin_dashboard_userName");
+      localStorage.removeItem("nasib_admin_dashboard_user_id");
+      localStorage.removeItem("nasib_admin_dashboard_user_token");
+      localStorage.removeItem("nasib_admin_dashboard_userName");
       router.replace("/");
     }
     return Promise.reject(error);
@@ -52,9 +52,9 @@ axios.interceptors.response.use(
       router.replace("/forbidden");
     }
     if (error.response.status === 401) {
-      localStorage.removeItem("naseeb_admin_dashboard_user_id");
-      localStorage.removeItem("naseeb_admin_dashboard_user_token");
-      localStorage.removeItem("naseeb_admin_dashboard_userName");
+      localStorage.removeItem("nasib_admin_dashboard_user_id");
+      localStorage.removeItem("nasib_admin_dashboard_user_token");
+      localStorage.removeItem("nasib_admin_dashboard_userName");
       router.replace("/");
     }
     return Promise.reject(error);
