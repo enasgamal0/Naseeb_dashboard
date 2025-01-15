@@ -47,7 +47,7 @@
             disabled
           />
           <base-input
-            v-if="data.users && data.users?.length == 0"
+            v-else-if="data.users && data.users?.length == 0"
             col="12"
             type="text"
             :placeholder="$t('PLACEHOLDERS.receivers')"
@@ -110,7 +110,7 @@ export default {
       // Start:: Loader Control Data
       isWaitingRequest: false,
       // End:: Loader Control Data
-      all: this.$t('STATUS.all'),
+      all: "",
       // Start:: Data Collection To Send
       // data: {
       //   receiverType: {
@@ -155,6 +155,7 @@ export default {
         this.data.title = res.data.data.notification.title;
         this.data.body = res.data.data.notification.body;
         this.data.users = res.data.data.notification.users;
+        this.all = this.$t('STATUS.all');
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);
