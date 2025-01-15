@@ -34,16 +34,24 @@
             col="12"
             type="text"
             :placeholder="$t('PLACEHOLDERS.receiverType')"
-            v-model.trim="data.reciever"
+            v-model.trim="data.users"
             disabled
           /> -->
           <base-select-input
-            v-if="data.reciever"
+            v-if="data.users && data.users?.length > 0"
             col="12"
-            :optionsList="data.reciever"
+            :optionsList="data.users"
             multiple
             :placeholder="$t('PLACEHOLDERS.receivers')"
-            v-model.trim="data.reciever"
+            v-model.trim="data.users"
+            disabled
+          />
+          <base-input
+            v-if="data.users && data.users?.length == 0"
+            col="12"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.receivers')"
+            v-model="all"
             disabled
           />
           <base-input
@@ -102,7 +110,7 @@ export default {
       // Start:: Loader Control Data
       isWaitingRequest: false,
       // End:: Loader Control Data
-
+      all: this.$t('STATUS.all'),
       // Start:: Data Collection To Send
       // data: {
       //   receiverType: {
@@ -119,7 +127,7 @@ export default {
         body: null,
         created_at: null,
         content: null,
-        reciever: null,
+        users: [],
       },
       // End:: Data Collection To Send
     };
@@ -146,7 +154,7 @@ export default {
         // this.data.sender_type = res.data.Notification.data.notifiable_type_translated;
         this.data.title = res.data.data.notification.title;
         this.data.body = res.data.data.notification.body;
-        this.data.reciever = res.data.data?.notifiable;
+        this.data.users = res.data.data.notification.users;
       } catch (error) {
         this.loading = false;
         console.log(error.response.data.message);
