@@ -61,7 +61,6 @@
             v-model.trim="data.created_at"
             disabled
           />
-
           <!-- End:: Submit Button Wrapper -->
         </div>
       </form>

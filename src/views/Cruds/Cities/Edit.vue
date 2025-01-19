@@ -36,7 +36,7 @@
           <base-select-input
             col="6"
             :optionsList="areas"
-            :placeholder="$t('PLACEHOLDERS.area')"
+            :placeholder="$t('PLACEHOLDERS.country')"
             v-model="data.area"
             required
           />
@@ -111,9 +111,9 @@ export default {
       try {
         let res = await this.$axios({
           method: "GET",
-          url: `areas?page=0&limit=0&is_active=1`,
+          url: `countries?page=0&limit=0&is_active=1`,
         });
-        this.areas = res.data.data;
+        this.areas = res.data.data.data;
       } catch (error) {
         console.log(error.response.data.message);
       }
@@ -135,7 +135,7 @@ export default {
         REQUEST_DATA.append("name[en]", this.data.name_en);
       }
       if (this.data.area) {
-        REQUEST_DATA.append("area_id", this.data.area.id);
+        REQUEST_DATA.append("country_id", this.data.area.id);
       }
       REQUEST_DATA.append("_method", "PUT");
       REQUEST_DATA.append("is_active", this.data.active ? 1 : 0);
@@ -163,7 +163,7 @@ export default {
         });
         this.data.name_ar = res.data.data.City.name_ar;
         this.data.name_en = res.data.data.City.name_en;
-        this.data.area = res.data.data.City.arae;
+        this.data.area = res.data.data.City.country;
         this.data.active = res.data.data.City.is_active;
       } catch (error) {
         this.loading = false;

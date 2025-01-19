@@ -60,7 +60,7 @@
       <!--  =========== Start:: Table Title =========== -->
       <div class="table_title_wrapper">
         <div class="title_text_wrapper">
-          <h5>{{ $t("PLACEHOLDERS.Religioussects") }}</h5>
+          <h5>{{ $t("PLACEHOLDERS.religioussects") }}</h5>
           <button
             v-if="!filterFormIsActive"
             class="filter_toggler"

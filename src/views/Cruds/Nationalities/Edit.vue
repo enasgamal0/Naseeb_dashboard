@@ -112,7 +112,7 @@ export default {
       this.isWaitingRequest = true;
       if (!this.data.name) {
         this.isWaitingRequest = false;
-        this.$message.error(this.$t("VALIDATION.reason_ar"));
+        this.$message.error(this.$t("VALIDATION.name_ar"));
         return;
       } else if (!this.data.nameEn) {
         this.isWaitingRequest = false;

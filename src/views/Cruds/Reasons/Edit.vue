@@ -116,7 +116,7 @@ export default {
         return;
       } else if (!this.data.nameEn) {
         this.isWaitingRequest = false;
-        this.$message.error(this.$t("VALIDATION.name_en"));
+        this.$message.error(this.$t("VALIDATION.reason_en"));
         return;
       } else {
         this.submitForm();

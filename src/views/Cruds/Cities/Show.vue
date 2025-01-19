@@ -36,13 +36,13 @@
           <base-select-input
             col="6"
             :optionsList="areas"
-            :placeholder="$t('PLACEHOLDERS.area')"
+            :placeholder="$t('PLACEHOLDERS.country')"
             v-model="data.area"
             disabled
           />
           <!-- End:: Area Input -->
 
-          <base-input
+          <!-- <base-input
             col="6"
             type="text"
             :placeholder="$t('PLACEHOLDERS.count_finish_order')"
@@ -55,7 +55,7 @@
             :placeholder="$t('TABLES.Workplaces.date')"
             v-model.trim="data.created_at"
             disabled
-          />
+          /> -->
 
           <!-- Start:: Deactivate Switch Input -->
           <div class="input_wrapper switch_wrapper my-5 col-6">
@@ -122,7 +122,7 @@ export default {
         });
         this.data.name_ar = res.data.data.City.name_ar;
         this.data.name_en = res.data.data.City.name_en;
-        this.data.area = res.data.data.City.arae;
+        this.data.area = res.data.data.City.country;
         this.data.count_finish_order = res.data.data.City.count_finish_order;
         this.data.created_at = res.data.data.City.created_at;
         this.data.active = res.data.data.City.is_active;

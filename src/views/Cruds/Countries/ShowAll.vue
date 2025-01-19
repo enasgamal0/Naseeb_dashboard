@@ -396,8 +396,8 @@ export default {
         });
         this.loading = false;
         this.tableRows = res.data.data.data;
-        this.paginations.last_page = res.data.meta.last_page;
-        this.paginations.items_per_page = res.data.meta.per_page;
+        this.paginations.last_page = res.data.data.meta.last_page;
+        this.paginations.items_per_page = res.data.data.meta.per_page;
       } catch (error) {
         this.loading = false;
       }
