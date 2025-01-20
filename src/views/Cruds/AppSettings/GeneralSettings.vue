@@ -110,6 +110,22 @@
             v-model.trim="data.youtube"
           />
           <!-- End:: Input -->
+          <!-- Start: Input -->
+          <base-input
+            col="6"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.android')"
+            v-model.trim="data.android"
+          />
+          <!-- End:: Input -->
+          <!-- Start:: Input -->
+          <base-input
+            col="6"
+            type="text"
+            :placeholder="$t('PLACEHOLDERS.ios')"
+            v-model.trim="data.ios"
+          />
+          <!-- End:: Input -->
 
           <!-- Start:: Submit Button Wrapper -->
           <div class="btn_wrapper">
@@ -149,6 +165,8 @@ export default {
         snapchat: null,
         facebook: null,
         youtube: null,
+        android: null,
+        ios: null,
         tiktok: null,
         email: null,
       },
@@ -193,6 +211,8 @@ export default {
         this.data.linkedIn_link = res.data.data.data[0].value.social.linkedin;
         this.data.facebook = res.data.data.data[0].value.social.facebook;
         this.data.youtube = res.data.data.data[0].value.social.youtube;
+        this.data.android = res.data.data.data[0].value.social.play_store;
+        this.data.ios = res.data.data.data[0].value.social.app_store;
 
         // End:: Set Data
       } catch (error) {
@@ -233,6 +253,12 @@ export default {
       }
       if (this.data.youtube) {
         REQUEST_DATA.append("value[social][youtube]", this.data.youtube);
+      }
+      if (this.data.android) {
+        REQUEST_DATA.append("value[social][play_store]", this.data.android);
+      }
+      if (this.data.ios) {
+        REQUEST_DATA.append("value[social][app_store]", this.data.ios);
       }
       if (this.data.email) {
         REQUEST_DATA.append("value[email]", this.data.email);
